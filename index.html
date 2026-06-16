@@ -151,10 +151,17 @@
 <rect x="360" y="252" width="6" height="14" fill="#85B7EB"/>
 <line x1="362" y1="252" x2="362" y2="246" stroke="#042C53" stroke-width="0.6"/>
 <polygon points="362,246 372,248 362,251" fill="#e24b4a"/>
-<text class="ts" x="540" y="256" fill="#042C53">today - Jun 14 - 310</text>
-<line x1="374" y1="261" x2="535" y2="261" stroke="#042C53" stroke-width="0.4" stroke-dasharray="2 3" opacity="0.6"/>
+<text class="ts" x="311" y="246" text-anchor="end" fill="#042C53">Jun 14 - 310</text>
 </g>
-<g transform="translate(362, 233)">
+<g>
+<polygon points="384,210 394,196 404,210" fill="#993556" stroke="#4B1528" stroke-width="0.5"/>
+<rect x="392" y="196" width="6" height="14" fill="#ED93B1"/>
+<line x1="394" y1="196" x2="394" y2="190" stroke="#4B1528" stroke-width="0.6"/>
+<polygon points="394,190 404,192 394,195" fill="#e24b4a"/>
+<text class="ts" x="555" y="200" fill="#4B1528">today - Jun 14 - 400 - 3-week solo set!</text>
+<line x1="406" y1="205" x2="550" y2="205" stroke="#4B1528" stroke-width="0.4" stroke-dasharray="2 3" opacity="0.6"/>
+</g>
+<g transform="translate(394, 177)">
 <rect x="-5" y="3" width="10" height="6" fill="#534ab7" rx="1"/>
 <circle cx="0" cy="-2" r="4" fill="#f4d4a0" stroke="#2c2c2a" stroke-width="0.4"/>
 <path d="M -3 -5 Q -4 -8 -1 -8 Q 0 -10 2 -8 Q 4 -8 3 -5 Z" fill="#2c2c2a"/>
@@ -189,15 +196,15 @@
 </g>
 <g fill="#3d4760"><path d="M 380 130 q 5 -3 8 0 q 3 -3 8 0 q -3 2 -8 2 q -5 0 -8 -2 z"/><path d="M 395 105 q 4 -2.5 7 0 q 2.5 -2.5 7 0 q -2.5 1.5 -7 1.5 q -4.5 0 -7 -1.5 z"/></g>
 <rect x="36" y="560" width="608" height="48" fill="#ffffff" stroke="#d3d1c7" stroke-width="0.5" rx="10"/>
-<text class="th" x="82" y="580" fill="#26215c">310 / 700</text>
+<text class="th" x="82" y="580" fill="#26215c">400 / 700</text>
 <text class="ts" x="82" y="595" fill="#5f5e5a">words today</text>
-<text class="th" x="195" y="580" fill="#0f6e56">44%</text>
+<text class="th" x="195" y="580" fill="#0f6e56">57%</text>
 <text class="ts" x="195" y="595" fill="#5f5e5a">to summit</text>
-<text class="th" x="285" y="580" fill="#ba7517">390 left</text>
+<text class="th" x="285" y="580" fill="#ba7517">300 left</text>
 <text class="ts" x="285" y="595" fill="#5f5e5a">words to climb</text>
 <text class="th" x="395" y="580" fill="#534ab7">44 days</text>
 <text class="ts" x="395" y="595" fill="#5f5e5a">since base camp</text>
-<text class="th" x="505" y="580" fill="#e24b4a">~Jul 23</text>
+<text class="th" x="505" y="580" fill="#e24b4a">~Jul 14</text>
 <text class="ts" x="505" y="595" fill="#5f5e5a">700 at 10/day</text>
 </svg>
   </div>
@@ -229,10 +236,11 @@ const actual = [
   {x:'2026-06-05', y:236},
   {x:'2026-06-06', y:250},
   {x:'2026-06-10', y:280},
-  {x:'2026-06-14', y:310}
+  {x:'2026-06-14', y:310},
+  {x:'2026-06-14', y:400}
 ];
 function project(rate, target){
-  const d = Math.ceil((target-310)/rate);
+  const d = Math.ceil((target-400)/rate);
   const end = new Date('2026-06-14');
   end.setDate(end.getDate()+d);
   return {x: end.toISOString().slice(0,10), y: target};
@@ -241,9 +249,9 @@ new Chart(document.getElementById('vocabChart'), {
   type:'line',
   data:{datasets:[
     {label:'Actual', data:actual, borderColor:'#534ab7', backgroundColor:'rgba(83,74,183,0.10)', borderWidth:2.5, pointRadius:4, pointBackgroundColor:'#534ab7', fill:true, tension:0.1},
-    {label:'Recent (16/day)', data:[{x:'2026-06-14',y:310}, project(16,700)], borderColor:'#0f6e56', borderDash:[6,4], borderWidth:2, pointRadius:[0,5], pointBackgroundColor:'#0f6e56', fill:false},
-    {label:'Realistic (10/day)', data:[{x:'2026-06-14',y:310}, project(10,700)], borderColor:'#ba7517', borderDash:[6,4], borderWidth:2, pointRadius:[0,5], pointBackgroundColor:'#ba7517', fill:false},
-    {label:'Long-run (7/day)', data:[{x:'2026-06-14',y:310}, project(7,700)], borderColor:'#888780', borderDash:[6,4], borderWidth:2, pointRadius:[0,5], pointBackgroundColor:'#888780', fill:false},
+    {label:'Recent (16/day)', data:[{x:'2026-06-14',y:400}, project(16,700)], borderColor:'#0f6e56', borderDash:[6,4], borderWidth:2, pointRadius:[0,5], pointBackgroundColor:'#0f6e56', fill:false},
+    {label:'Realistic (10/day)', data:[{x:'2026-06-14',y:400}, project(10,700)], borderColor:'#ba7517', borderDash:[6,4], borderWidth:2, pointRadius:[0,5], pointBackgroundColor:'#ba7517', fill:false},
+    {label:'Long-run (7/day)', data:[{x:'2026-06-14',y:400}, project(7,700)], borderColor:'#888780', borderDash:[6,4], borderWidth:2, pointRadius:[0,5], pointBackgroundColor:'#888780', fill:false},
     {label:'300', data:[{x:'2026-05-01',y:300},{x:'2026-08-15',y:300}], borderColor:'rgba(95,94,90,0.35)', borderDash:[2,3], borderWidth:1, pointRadius:0, fill:false},
     {label:'500', data:[{x:'2026-05-01',y:500},{x:'2026-08-15',y:500}], borderColor:'rgba(95,94,90,0.35)', borderDash:[2,3], borderWidth:1, pointRadius:0, fill:false},
     {label:'700', data:[{x:'2026-05-01',y:700},{x:'2026-08-15',y:700}], borderColor:'rgba(95,94,90,0.35)', borderDash:[2,3], borderWidth:1, pointRadius:0, fill:false}
