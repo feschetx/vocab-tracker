@@ -3,500 +3,293 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Raphael's Vocabulary Climb</title>
+<title>Operation SSAT-2027 · Raphael</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f7f5ee;
-    --card: #ffffff;
-    --ink: #1a1a1a;
-    --ink-muted: #6b6b6b;
-    --ink-soft: #999;
-    --border: rgba(0,0,0,0.08);
-    --border-strong: rgba(0,0,0,0.15);
-    --primary: #26215c;
-    --success: #0f6e56;
-    --success-soft: #d1ede4;
-    --warn: #ba7517;
-    --accent: #d85a30;
-    --purple: #534ab7;
+    --bg: #0f0f0f;
+    --panel: #1a1a1a;
+    --card: #262626;
+    --border: #333;
+    --border-soft: #2a2a2a;
+    --ink: #d4d4c8;
+    --ink-bright: #f0efe7;
+    --ink-muted: #888;
+    --ink-soft: #555;
+    --green: #7ba05b;
+    --amber: #c99a3f;
+    --red: #c94040;
+    --blue: #59a3c4;
   }
   * { box-sizing: border-box; }
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
     background: var(--bg);
     color: var(--ink);
     margin: 0;
-    padding: 32px 24px;
+    padding: 24px 16px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 820px; margin: 0 auto; }
+  .wrap { max-width: 900px; margin: 0 auto; }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .panel-title {
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.2em;
+    margin: 0 0 14px;
+    font-weight: 600;
+  }
 
   /* Header */
   .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 28px;
-  }
-  .header h1 {
-    font-size: 26px;
-    font-weight: 700;
-    margin: 0;
-    letter-spacing: -0.02em;
-  }
-  .header .date {
-    color: var(--ink-muted);
-    font-size: 13px;
-    font-weight: 500;
-  }
-  .header .sub {
-    color: var(--ink-muted);
-    font-size: 14px;
-    margin: 4px 0 0;
-    font-weight: 400;
-  }
-
-  /* Cards */
-  .card {
-    background: var(--card);
-    border: 0.5px solid var(--border);
-    border-radius: 14px;
     padding: 24px;
-    margin-bottom: 18px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
   }
-
-  /* Hero */
-  .hero {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 24px;
-    padding: 28px;
-  }
-  .hero .big-number {
-    font-size: 64px;
+  .stamp {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    border: 2px solid var(--red);
+    color: var(--red);
+    padding: 4px 12px;
+    font-size: 11px;
     font-weight: 700;
-    color: var(--primary);
-    line-height: 1;
-    letter-spacing: -0.03em;
+    letter-spacing: 0.25em;
+    transform: rotate(-6deg);
+    background: rgba(201, 64, 64, 0.05);
   }
-  .hero .big-number .of {
-    font-size: 28px;
-    color: var(--ink-soft);
-    font-weight: 500;
-  }
-  .hero .label {
-    color: var(--ink-muted);
-    font-size: 14px;
-    font-weight: 500;
-    margin-top: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .hero .pct-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--success-soft);
-    color: var(--success);
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 600;
-    margin-top: 14px;
-  }
-  .hero .pct-tag .dot { width: 6px; height: 6px; background: var(--success); border-radius: 50%; }
-  .hero .ring {
-    width: 130px;
-    height: 130px;
-    position: relative;
-  }
-  .hero .ring svg { transform: rotate(-90deg); }
-  .hero .ring .ring-label {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .hero .ring .ring-pct { font-size: 22px; font-weight: 700; color: var(--primary); }
-  .hero .ring .ring-sub { font-size: 11px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .file-tag { font-size: 10px; color: var(--ink-muted); letter-spacing: 0.2em; }
+  .op-title { font-size: 26px; font-weight: 700; color: var(--ink-bright); margin: 4px 0 6px; letter-spacing: -0.01em; }
+  .op-meta { font-size: 11px; color: var(--green); letter-spacing: 0.08em; }
+  .op-meta .agent { color: var(--ink); }
 
-  /* Progress bar to summit */
-  .progress-bar {
-    margin-top: 20px;
-    height: 12px;
-    background: rgba(0,0,0,0.05);
-    border-radius: 999px;
-    overflow: hidden;
-    position: relative;
-  }
-  .progress-bar .fill {
-    height: 100%;
-    background: linear-gradient(90deg, #0f6e56 0%, #26215c 100%);
-    border-radius: 999px;
-    transition: width 0.6s ease;
-  }
-  .progress-bar .markers {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    pointer-events: none;
-  }
-  .progress-bar .marker {
-    position: absolute;
-    top: -4px;
-    width: 2px;
-    height: 20px;
-    background: rgba(0,0,0,0.25);
-    border-radius: 1px;
-  }
-  .progress-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    color: var(--ink-soft);
-    margin-top: 8px;
-    font-weight: 500;
-  }
-
-  /* Batches strip */
-  .batches {
+  /* Top stat row */
+  .stat-row {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
-    margin-top: 22px;
-  }
-  .batch-pill {
-    background: rgba(0,0,0,0.03);
-    border: 0.5px solid var(--border);
-    border-radius: 10px;
-    padding: 10px 12px;
-    text-align: center;
-  }
-  .batch-pill.complete {
-    background: var(--success-soft);
-    border-color: rgba(15,110,86,0.15);
-  }
-  .batch-pill.progress {
-    background: #fef3d5;
-    border-color: rgba(186,117,23,0.15);
-  }
-  .batch-pill .num {
-    font-size: 11px;
-    color: var(--ink-muted);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  .batch-pill .status {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink);
-    margin-top: 2px;
-  }
-  .batch-pill.complete .status { color: var(--success); }
-  .batch-pill.progress .status { color: var(--warn); }
-
-  /* Section headings */
-  .card h2 {
-    font-size: 15px;
-    font-weight: 600;
-    margin: 0 0 16px;
-    color: var(--ink);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  /* Stat row */
-  .stat-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(5, 1fr);
     gap: 12px;
+    margin-bottom: 16px;
   }
   .stat {
-    background: rgba(0,0,0,0.03);
-    border-radius: 10px;
+    background: var(--card);
     padding: 14px 16px;
+    border-left: 3px solid var(--green);
+    border-radius: 3px;
   }
-  .stat .val {
+  .stat.amber { border-left-color: var(--amber); }
+  .stat.red { border-left-color: var(--red); }
+  .stat.blue { border-left-color: var(--blue); }
+  .stat-label {
+    font-size: 9px;
+    color: var(--ink-muted);
+    letter-spacing: 0.15em;
+    font-weight: 600;
+  }
+  .stat-value {
     font-size: 22px;
     font-weight: 700;
-    letter-spacing: -0.01em;
+    color: var(--ink-bright);
+    margin-top: 4px;
+    letter-spacing: -0.02em;
   }
-  .stat .lbl {
-    font-size: 12px;
+  .stat-value.green { color: var(--green); }
+  .stat-value.amber { color: var(--amber); }
+  .stat-sub {
+    font-size: 10px;
     color: var(--ink-muted);
-    font-weight: 500;
     margin-top: 2px;
   }
-  .stat.mastered .val { color: var(--success); }
-  .stat.deck .val { color: var(--primary); }
-  .stat.left .val { color: var(--warn); }
-  .stat.pace .val { color: var(--accent); }
+  .stat-sub.green { color: var(--green); }
 
-  /* Mountain SVG frame */
-  svg.mountain { width: 100%; height: auto; display: block; border-radius: 10px; overflow: hidden; }
-  .mountain-frame { border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
-
-  /* SVG text helpers (used inside the mountain) */
-  .t { font-size: 14px; font-weight: 400; font-family: inherit; }
-  .ts { font-size: 12px; font-weight: 400; font-family: inherit; }
-  .th { font-size: 14px; font-weight: 500; font-family: inherit; }
-
-  /* Chart */
-  .legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    font-size: 12px;
-    color: var(--ink-muted);
-    margin-bottom: 12px;
+  /* Two-col layout for phases + chart */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
   }
-  .legend span { display: flex; align-items: center; gap: 6px; font-weight: 500; }
-  .chip { display: inline-block; width: 14px; height: 3px; }
+  @media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } .stat-row { grid-template-columns: repeat(2, 1fr); } }
 
+  /* Phases */
+  .phase-row {
+    display: grid;
+    grid-template-columns: 170px 1fr 50px;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 0;
+    font-size: 12px;
+  }
+  .phase-bar {
+    background: #333;
+    height: 8px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .phase-bar-fill { height: 100%; background: var(--green); border-radius: 2px; transition: width 0.6s ease; }
+  .phase-bar-fill.progress { background: var(--amber); }
+  .phase-bar-fill.locked { background: var(--ink-soft); }
+  .phase-name { color: var(--ink); }
+  .phase-name.locked { color: var(--ink-soft); }
+  .phase-pct { text-align: right; }
+
+  /* 30-day chart */
+  .chart-wrap { position: relative; height: 200px; }
   canvas { display: block; }
 
-  /* Footer meta */
-  .footer {
-    text-align: center;
-    color: var(--ink-soft);
-    font-size: 11px;
-    padding: 24px 0 0;
-    letter-spacing: 0.05em;
+  /* Projections */
+  .proj-row {
+    display: grid;
+    grid-template-columns: 1fr 90px 90px;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border-soft);
+    font-size: 12px;
   }
+  .proj-row:last-child { border-bottom: none; }
+  .proj-row .rate { color: var(--ink-muted); }
+  .proj-row .eta { text-align: right; font-weight: 600; }
+
+  /* Ticker */
+  .ticker {
+    background: var(--card);
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 1px solid var(--border);
+  }
+  .ticker span.hi { color: var(--green); font-weight: 600; }
+  .ticker span.warn { color: var(--amber); font-weight: 600; }
 </style>
 </head>
 <body>
 <div class="wrap">
 
+  <!-- Header -->
   <div class="header">
-    <div>
-      <h1>Raphael's Vocabulary Climb</h1>
-      <p class="sub">SSAT preparation - target 700 words by October test</p>
-    </div>
-    <div class="date" id="today"></div>
-  </div>
-
-  <!-- Hero -->
-  <div class="card hero">
-    <div>
-      <div class="big-number">442<span class="of"> / 700</span></div>
-      <div class="label">words mastered</div>
-      <div class="pct-tag"><span class="dot"></span>63% to summit - batches 1-4 done, batch 5 at 42/100</div>
-      <div class="progress-bar">
-        <div class="fill" style="width: 63%"></div>
-        <div class="markers">
-          <div class="marker" style="left: 42.85%" title="300 - mock target"></div>
-          <div class="marker" style="left: 71.43%" title="500 - halfway"></div>
-        </div>
-      </div>
-      <div class="progress-labels">
-        <span>Base 0</span>
-        <span>300 - mock</span>
-        <span>500 - halfway</span>
-        <span>700 - summit</span>
-      </div>
-    </div>
-    <div class="ring">
-      <svg width="130" height="130" viewBox="0 0 130 130">
-        <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="10"/>
-        <circle cx="65" cy="65" r="55" fill="none" stroke="#0f6e56" stroke-width="10"
-                stroke-dasharray="345.6" stroke-dashoffset="127.87" stroke-linecap="round"/>
-      </svg>
-      <div class="ring-label">
-        <div class="ring-pct">63%</div>
-        <div class="ring-sub">to summit</div>
-      </div>
+    <div class="stamp">CLASSIFIED</div>
+    <div class="file-tag">FILE // 001-ALPHA</div>
+    <div class="op-title">OPERATION: SSAT-2027</div>
+    <div class="op-meta">
+      [STATUS: <span class="hi">ACTIVE</span>] · AGENT: <span class="agent">RAPHAEL</span> · TARGET: OCT 2026 · <span id="today"></span>
     </div>
   </div>
 
-  <!-- Batches strip -->
-  <div class="card">
-    <h2>Batches</h2>
-    <div class="batches">
-      <div class="batch-pill complete">
-        <div class="num">Batch 1</div>
-        <div class="status">100 / 100 ✓</div>
-      </div>
-      <div class="batch-pill complete">
-        <div class="num">Batch 2</div>
-        <div class="status">100 / 100 ✓</div>
-      </div>
-      <div class="batch-pill complete">
-        <div class="num">Batch 3</div>
-        <div class="status">100 / 100 ✓</div>
-      </div>
-      <div class="batch-pill complete">
-        <div class="num">Batch 4</div>
-        <div class="status">100 / 100 ✓</div>
-      </div>
-      <div class="batch-pill progress">
-        <div class="num">Batch 5</div>
-        <div class="status">42 / 100</div>
-      </div>
-      <div class="batch-pill">
-        <div class="num">Batch 6</div>
-        <div class="status">0 / 100</div>
-      </div>
+  <!-- Top stat row -->
+  <div class="stat-row">
+    <div class="stat">
+      <div class="stat-label">// ACQUIRED</div>
+      <div class="stat-value">442</div>
+      <div class="stat-sub green">▲ +22 today</div>
+    </div>
+    <div class="stat amber">
+      <div class="stat-label">// TARGET</div>
+      <div class="stat-value">750</div>
+      <div class="stat-sub">308 remaining</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">// COMPLETE</div>
+      <div class="stat-value green">58.9%</div>
+      <div class="stat-sub">of mission</div>
+    </div>
+    <div class="stat blue">
+      <div class="stat-label">// 7D VELOCITY</div>
+      <div class="stat-value">13.1</div>
+      <div class="stat-sub">units / day</div>
+    </div>
+    <div class="stat red">
+      <div class="stat-label">// EST. ETA</div>
+      <div class="stat-value">JUL 27</div>
+      <div class="stat-sub">at current pace</div>
     </div>
   </div>
 
-  <!-- Mountain -->
-  <div class="card">
-    <h2>The mountain</h2>
-    <div class="mountain-frame">
-    <svg class="mountain" viewBox="0 0 680 620" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="dawn" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#2d3a6b"/>
-        <stop offset="0.25" stop-color="#7a5a8a"/>
-        <stop offset="0.55" stop-color="#e88a7a"/>
-        <stop offset="0.85" stop-color="#f7d39e"/>
-        <stop offset="1" stop-color="#fbeed2"/>
-      </linearGradient>
-      <linearGradient id="snow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#cfd8e3"/></linearGradient>
-      <linearGradient id="rock" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5d6b85"/><stop offset="1" stop-color="#3d4760"/></linearGradient>
-      <linearGradient id="midRock" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7c8aa3"/><stop offset="1" stop-color="#566378"/></linearGradient>
-      <linearGradient id="farRock" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a5acc0"/><stop offset="1" stop-color="#8d94aa"/></linearGradient>
-    </defs>
-    <rect x="0" y="0" width="680" height="620" fill="url(#dawn)"/>
-    <circle cx="540" cy="110" r="32" fill="#fff7d6" opacity="0.9"/>
-    <circle cx="540" cy="110" r="46" fill="#fff7d6" opacity="0.18"/>
-    <g fill="#ffffff" opacity="0.5">
-      <circle cx="100" cy="80" r="1.2"/><circle cx="180" cy="55" r="0.9"/><circle cx="260" cy="90" r="1.1"/>
-      <circle cx="320" cy="50" r="1.3"/><circle cx="410" cy="70" r="0.8"/><circle cx="60" cy="130" r="0.9"/>
-      <circle cx="220" cy="35" r="1"/>
-    </g>
-    <path d="M 0 480 Q 80 420 160 440 T 320 425 Q 400 405 480 430 T 680 460 L 680 540 L 0 540 Z" fill="url(#farRock)" opacity="0.55"/>
-    <path d="M 0 510 L 60 470 L 130 430 L 200 420 L 280 380 L 360 410 L 440 380 L 520 410 L 600 450 L 680 480 L 680 540 L 0 540 Z" fill="url(#midRock)" opacity="0.85"/>
-    <path d="M 0 540 L 60 530 L 110 480 L 180 380 L 240 290 L 290 200 L 340 80 L 395 200 L 460 290 L 520 380 L 590 480 L 640 530 L 680 540 Z" fill="url(#rock)"/>
-    <path d="M 285 320 L 340 80 L 395 320 L 380 320 L 365 280 L 350 305 L 340 290 L 327 320 L 318 285 L 308 315 L 295 290 Z" fill="url(#snow)" stroke="#e8eef5" stroke-width="0.5"/>
-    <path d="M 230 360 L 248 340 L 268 350 L 285 320 L 295 290 L 308 315 L 318 285 L 327 320 L 340 290 L 350 305 L 365 280 L 380 320 L 395 320 L 412 340 L 435 355 L 425 380 L 405 370 L 390 385 L 365 375 L 345 388 L 315 375 L 285 385 L 260 372 L 245 388 Z" fill="url(#snow)" opacity="0.85"/>
+  <!-- Phases + 30-day chart -->
+  <div class="two-col">
+    <div class="panel">
+      <div class="panel-title">// PHASE STATUS</div>
+      <div class="phase-row"><span class="phase-name">P1: FOUNDATION</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100%</span></div>
+      <div class="phase-row"><span class="phase-name">P2: RECONNAISSANCE</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100%</span></div>
+      <div class="phase-row"><span class="phase-name">P3: INFILTRATION</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100%</span></div>
+      <div class="phase-row"><span class="phase-name">P4: DEEP COVER</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100%</span></div>
+      <div class="phase-row"><span class="phase-name" style="color: var(--amber);">P5: ELITE OPS ▶</span><span class="phase-bar"><span class="phase-bar-fill progress" style="width:42%"></span></span><span class="phase-pct" style="color: var(--amber)">42%</span></div>
+      <div class="phase-row"><span class="phase-name locked">P6: SUMMIT ACCESS 🔒</span><span class="phase-bar"><span class="phase-bar-fill locked" style="width:0%"></span></span><span class="phase-pct" style="color: var(--ink-soft)">0%</span></div>
+      <div class="phase-row"><span class="phase-name locked">P7: FINAL BREACH 🔒</span><span class="phase-bar"><span class="phase-bar-fill locked" style="width:0%"></span></span><span class="phase-pct" style="color: var(--ink-soft)">0%</span></div>
+    </div>
 
-    <!-- Simplified milestone markers (major only): 100, 200, 300, 400, current -->
-    <g>
-      <polygon points="160,510 170,496 180,510" fill="#534ab7" stroke="#26215c" stroke-width="0.5"/>
-      <rect x="168" y="496" width="6" height="14" fill="#7f77dd"/>
-      <text class="ts" x="145" y="493" text-anchor="end" fill="#26215c">Batch 1 - 100</text>
-    </g>
-    <g>
-      <polygon points="215,432 225,418 235,432" fill="#0f6e56" stroke="#04342c" stroke-width="0.5"/>
-      <rect x="223" y="418" width="6" height="14" fill="#5dcaa5"/>
-      <text class="ts" x="205" y="415" text-anchor="end" fill="#04342c">Batch 2 - 200</text>
-    </g>
-    <g>
-      <polygon points="285,340 295,326 305,340" fill="#ba7517" stroke="#633806" stroke-width="0.5"/>
-      <rect x="293" y="326" width="6" height="14" fill="#fac775"/>
-      <text class="ts" x="275" y="323" text-anchor="end" fill="#633806">Batch 3 - 300</text>
-    </g>
-    <g>
-      <polygon points="384,210 394,196 404,210" fill="#993556" stroke="#4B1528" stroke-width="0.5"/>
-      <rect x="392" y="196" width="6" height="14" fill="#ED93B1"/>
-      <text class="ts" x="405" y="200" fill="#4B1528">Batch 4 - 400</text>
-    </g>
-
-    <!-- Deck marker (600 - not yet mastered, faded) -->
-    <g opacity="0.55">
-      <polygon points="416,192 426,178 436,192" fill="none" stroke="#26215C" stroke-width="1" stroke-dasharray="3 2"/>
-      <text class="ts" x="405" y="182" text-anchor="end" fill="#26215C">Deck - 600</text>
-    </g>
-
-    <!-- Climber at 420 (current mastered) -->
-    <g transform="translate(414, 155)">
-      <rect x="-5" y="3" width="10" height="6" fill="#534ab7" rx="1"/>
-      <circle cx="0" cy="-2" r="4" fill="#f4d4a0" stroke="#2c2c2a" stroke-width="0.4"/>
-      <path d="M -3 -5 Q -4 -8 -1 -8 Q 0 -10 2 -8 Q 4 -8 3 -5 Z" fill="#2c2c2a"/>
-      <rect x="-3" y="9" width="2.5" height="9" fill="#1f3a5f"/>
-      <rect x="0.5" y="9" width="2.5" height="9" fill="#1f3a5f"/>
-      <rect x="-3.5" y="17" width="3" height="2" fill="#2c2c2a"/>
-      <rect x="0.5" y="17" width="3" height="2" fill="#2c2c2a"/>
-      <line x1="-5" y1="4" x2="-10" y2="1" stroke="#f4d4a0" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="5" y1="4" x2="11" y2="-2" stroke="#f4d4a0" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="11" y1="-2" x2="14" y2="-12" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
-      <polygon points="13,-12 17,-13 14,-8" fill="#888"/>
-      <rect x="-4" y="9" width="2" height="3" fill="#e24b4a" opacity="0.7"/>
-      <rect x="-40" y="-24" width="80" height="14" rx="7" fill="#ffffff" opacity="0.92"/>
-      <text class="th" x="0" y="-14" text-anchor="middle" fill="#26215c" style="font-size:11px">Raphael · 442 ✓</text>
-    </g>
-
-    <!-- Halfway marker (500) -->
-    <g opacity="0.45">
-      <polygon points="320,209 330,195 340,209" fill="none" stroke="#5f5e5a" stroke-width="0.8" stroke-dasharray="2 2"/>
-      <text class="ts" x="345" y="209" fill="#5f5e5a">500 - halfway</text>
-    </g>
-
-    <!-- Summit -->
-    <g>
-      <line x1="340" y1="80" x2="340" y2="55" stroke="#26215c" stroke-width="0.8"/>
-      <polygon points="340,55 370,62 340,69" fill="#e24b4a" stroke="#791f1f" stroke-width="0.4"/>
-      <text class="th" x="340" y="48" text-anchor="middle" fill="#26215c">SUMMIT · 700</text>
-    </g>
-
-    <!-- Clouds -->
-    <g opacity="0.9">
-      <ellipse cx="100" cy="180" rx="32" ry="10" fill="#ffffff" opacity="0.6"/>
-      <ellipse cx="115" cy="175" rx="22" ry="8" fill="#ffffff" opacity="0.55"/>
-      <ellipse cx="430" cy="220" rx="40" ry="11" fill="#ffffff" opacity="0.45"/>
-      <ellipse cx="445" cy="214" rx="26" ry="8" fill="#ffffff" opacity="0.5"/>
-    </g>
-    <g fill="#3d4760">
-      <path d="M 380 130 q 5 -3 8 0 q 3 -3 8 0 q -3 2 -8 2 q -5 0 -8 -2 z"/>
-      <path d="M 395 105 q 4 -2.5 7 0 q 2.5 -2.5 7 0 q -2.5 1.5 -7 1.5 q -4.5 0 -7 -1.5 z"/>
-    </g>
-    </svg>
+    <div class="panel">
+      <div class="panel-title">// 30-DAY TREND</div>
+      <div class="chart-wrap"><canvas id="trend"></canvas></div>
+      <div style="font-size: 10px; color: var(--ink-muted); letter-spacing: 0.1em; margin-top: 12px;">// PROJECTIONS</div>
+      <div class="proj-row"><span class="rate">@ 22/d (peak 7D)</span><span style="color: var(--green); text-align:right;">JUL 17</span><span></span></div>
+      <div class="proj-row"><span class="rate">@ 13/d (avg 7D)</span><span style="color: var(--amber); text-align:right;">JUL 27</span><span></span></div>
+      <div class="proj-row"><span class="rate">@ 7/d (long-run)</span><span style="color: var(--red); text-align:right;">AUG 17</span><span></span></div>
     </div>
   </div>
 
-  <!-- Stats -->
-  <div class="card">
-    <h2>Snapshot</h2>
-    <div class="stat-grid">
-      <div class="stat mastered">
-        <div class="val">442</div>
-        <div class="lbl">mastered ✓</div>
-      </div>
-      <div class="stat deck">
-        <div class="val">600</div>
-        <div class="lbl">in the deck</div>
-      </div>
-      <div class="stat left">
-        <div class="val">258</div>
-        <div class="lbl">to summit</div>
-      </div>
-      <div class="stat pace">
-        <div class="val">6.4 / day</div>
-        <div class="lbl">avg since May 1</div>
-      </div>
-    </div>
+  <!-- Ticker -->
+  <div class="ticker">
+    [TICKER] · B5 <span class="hi">+22 TODAY</span> · MASTERED <span class="hi">442</span> · <span class="hi">+5.2%</span> D/D · 7D VELOCITY <span class="hi">13.1/D</span> · 308 REMAINING · ETA <span class="warn">JUL 27</span> · NEXT MILESTONE <span class="warn">500 (58 TO GO)</span> · LAST TRANSMISSION 2026-07-03 · CONTINUE MISSION
   </div>
 
-  <!-- Chart -->
-  <div class="card">
-    <h2>Cumulative progress + projections</h2>
-    <div class="legend">
-      <span><span class="chip" style="background:#534ab7"></span>Actual mastered</span>
-      <span><span class="chip" style="border-top:2px dashed #0f6e56;height:0"></span>Recent pace (16/day)</span>
-      <span><span class="chip" style="border-top:2px dashed #ba7517;height:0"></span>Realistic (10/day)</span>
-      <span><span class="chip" style="border-top:2px dashed #888780;height:0"></span>Long-run (7/day)</span>
-    </div>
-    <div style="position: relative; width: 100%; height: 340px;">
-      <canvas id="vocabChart"></canvas>
-    </div>
-  </div>
-
-  <div class="footer">Last updated 2026-07-03 · rebuilt from Raphael Words Status.xlsx</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-moment/1.0.1/chartjs-adapter-moment.min.js"></script>
 <script>
-document.getElementById('
+document.getElementById('today').textContent = new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'}).toUpperCase();
+
+// Mastery log (from xlsx Learning Log tab)
+const actual = [
+  {x:'2026-06-04', y:340},
+  {x:'2026-06-14', y:340},
+  {x:'2026-06-25', y:350},
+  {x:'2026-06-29', y:370},
+  {x:'2026-06-30', y:420},
+  {x:'2026-07-03', y:442}
+];
+
+new Chart(document.getElementById('trend'), {
+  type: 'line',
+  data: {
+    datasets: [
+      { label:'Mastered', data:actual, borderColor:'#7ba05b', backgroundColor:'rgba(123,160,91,0.15)', borderWidth:2, pointRadius:3, pointBackgroundColor:'#7ba05b', pointBorderWidth:0, fill:true, tension:0.15 },
+      { label:'750', data:[{x:'2026-06-04',y:750},{x:'2026-07-15',y:750}], borderColor:'rgba(201,64,64,0.5)', borderDash:[3,3], borderWidth:1, pointRadius:0, fill:false },
+      { label:'500', data:[{x:'2026-06-04',y:500},{x:'2026-07-15',y:500}], borderColor:'rgba(201,154,63,0.4)', borderDash:[2,3], borderWidth:1, pointRadius:0, fill:false }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins: {
+      legend: { display:false },
+      tooltip: { callbacks: { label: ctx => `${ctx.raw.y} on ${ctx.raw.x}` }, backgroundColor:'#1a1a1a', borderColor:'#333', borderWidth:1, titleColor:'#d4d4c8', bodyColor:'#7ba05b', titleFont:{family:'JetBrains Mono',size:11}, bodyFont:{family:'JetBrains Mono',size:11} }
+    },
+    scales: {
+      x: { type:'time', time:{unit:'week', tooltipFormat:'MMM D', displayFormats:{week:'MMM D'}}, min:'2026-06-04', max:'2026-07-15', ticks:{color:'#888', font:{family:'JetBrains Mono', size:10}}, grid:{color:'rgba(255,255,255,0.04)'}, border:{color:'#333'} },
+      y: { min:0, max:800, ticks:{stepSize:250, color:'#888', font:{family:'JetBrains Mono', size:10}}, grid:{color:'rgba(255,255,255,0.04)'}, border:{color:'#333'} }
+    }
+  }
+});
+</script>
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
