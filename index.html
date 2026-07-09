@@ -197,27 +197,27 @@
   <div class="stat-row">
     <div class="stat">
       <div class="stat-label">// ACQUIRED</div>
-      <div class="stat-value">500</div>
-      <div class="stat-sub green">▲ +28 yesterday</div>
+      <div class="stat-value">574</div>
+      <div class="stat-sub green">▲ +74 (tutor list)</div>
     </div>
     <div class="stat amber">
       <div class="stat-label">// TARGET</div>
       <div class="stat-value">750</div>
-      <div class="stat-sub">250 remaining</div>
+      <div class="stat-sub">176 remaining</div>
     </div>
     <div class="stat">
       <div class="stat-label">// COMPLETE</div>
-      <div class="stat-value green">66.7%</div>
+      <div class="stat-value green">76.5%</div>
       <div class="stat-sub">of mission</div>
     </div>
     <div class="stat blue">
       <div class="stat-label">// 7D VELOCITY</div>
-      <div class="stat-value">18.6</div>
+      <div class="stat-value">27.9</div>
       <div class="stat-sub">units / day</div>
     </div>
     <div class="stat red">
       <div class="stat-label">// EST. ETA</div>
-      <div class="stat-value">JUL 22</div>
+      <div class="stat-value">JUL 15</div>
       <div class="stat-sub">at current pace</div>
     </div>
   </div>
@@ -247,7 +247,7 @@
 
   <!-- Ticker -->
   <div class="ticker">
-    [TICKER] · B5 <span class="hi">COMPLETE</span> · MASTERED <span class="hi">500</span> · MILESTONE <span class="hi">500 REACHED</span> · 7D VELOCITY <span class="hi">18.6/D</span> · 250 REMAINING · ETA <span class="warn">JUL 22</span> · NEXT PHASE: <span class="warn">SUMMIT ACCESS (B6)</span> · LAST TRANSMISSION 2026-07-08 · CONTINUE MISSION
+    [TICKER] · MASTERED <span class="hi">574</span> · B5 <span class="hi">COMPLETE</span> · TUTOR LIST <span class="hi">+74 (JUL 6)</span> · 176 REMAINING · ETA <span class="warn">JUL 15</span> · NEXT PHASE: <span class="warn">SUMMIT ACCESS (B6)</span> · LAST TRANSMISSION 2026-07-09 · CONTINUE MISSION
   </div>
 
 </div>
@@ -274,7 +274,8 @@ const actual = [
   {x:'2026-06-30', y:420},
   {x:'2026-07-03', y:442},
   {x:'2026-07-05', y:472},
-  {x:'2026-07-08', y:500}
+  {x:'2026-07-06', y:546},
+  {x:'2026-07-08', y:574}
 ];
 
 // Gradient fill for the area under the line
@@ -342,9 +343,10 @@ new Chart(canvas, {
       ctx.font = '600 13px JetBrains Mono';
       ctx.fillStyle = '#a3d47a';
       ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-      ctx.fillText('◄ 500', x + 12, y);
+      ctx.fillText('◄ 574', x + 12, y);
       ctx.restore();
     }
   }]
 });
-</s
+</script>
+</body>
