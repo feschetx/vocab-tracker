@@ -250,7 +250,7 @@
   <div class="panel">
     <div class="panel-title">// MORPHOLOGY MASTERY · pieces of the language</div>
     <div class="phase-row"><span class="phase-name">PREFIXES · front</span><span class="phase-bar"><span class="phase-bar-fill locked" style="width:0%"></span></span><span class="phase-pct" style="color: var(--ink-soft)">?/46</span></div>
-    <div class="phase-row"><span class="phase-name" style="color: var(--green);">ROOTS · core ✓ audited</span><span class="phase-bar"><span class="phase-bar-fill" style="width:78%"></span></span><span class="phase-pct" style="color: var(--green)">36/46 (78%)</span></div>
+    <div class="phase-row"><span class="phase-name" style="color: var(--green);">ROOTS · core ✓ audited</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100% (10 to reinforce)</span></div>
     <div class="phase-row"><span class="phase-name">SUFFIXES · end</span><span class="phase-bar"><span class="phase-bar-fill locked" style="width:0%"></span></span><span class="phase-pct" style="color: var(--ink-soft)">?/20</span></div>
     <div style="font-size: 11px; color: var(--amber); margin-top: 10px; letter-spacing: 0.05em;">
       ★ 10 ROOTS TO FOCUS: <span style="color: var(--ink-bright);">nym · mit/miss · duc/duct · fer · ven/vent · ped · cogn · form · sign · gen</span>
@@ -316,4 +316,52 @@ new Chart(canvas, {
     layout: { padding: { left: 4, right: 30, top: 12, bottom: 4 } },
     plugins: {
       legend: { display:false },
-      tooltip: { callbacks: { label: ctx => `${ctx.raw.y} on ${ctx.raw.x}` }, backgroundColor:'#1a1a1a', borderColor:'#333', borderWidth:1, titleColor:'#d4d4c8', bodyColor:'#a3d47a', tit
+      tooltip: { callbacks: { label: ctx => `${ctx.raw.y} on ${ctx.raw.x}` }, backgroundColor:'#1a1a1a', borderColor:'#333', borderWidth:1, titleColor:'#d4d4c8', bodyColor:'#a3d47a', titleFont:{family:'JetBrains Mono',size:11}, bodyFont:{family:'JetBrains Mono',size:11} }
+    },
+    scales: {
+      x: {
+        type:'time',
+        time:{unit:'week', tooltipFormat:'MMM D', displayFormats:{week:'MMM D'}},
+        min:'2026-05-01', max:'2026-08-15',
+        ticks:{color:'#888', font:{family:'JetBrains Mono', size:10}, maxRotation:0},
+        grid:{color:'rgba(255,255,255,0.04)'},
+        border:{color:'#333'}
+      },
+      y: {
+        min:0, max:800,
+        ticks:{
+          stepSize:200,
+          color:'#888',
+          font:{family:'JetBrains Mono', size:10},
+          padding: 8,
+          callback: v => v
+        },
+        grid:{color:'rgba(255,255,255,0.04)'},
+        border:{color:'#333'},
+        afterFit: (axis) => { axis.width = 44; }
+      }
+    }
+  },
+  plugins: [{
+    id: 'endpointLabel',
+    afterDatasetsDraw(chart) {
+      const {ctx, data, scales} = chart;
+      const last = data.datasets[0].data[data.datasets[0].data.length - 1];
+      const x = scales.x.getPixelForValue(new Date(last.x));
+      const y = scales.y.getPixelForValue(last.y);
+      ctx.save();
+      ctx.beginPath(); ctx.arc(x, y, 8, 0, Math.PI*2);
+      ctx.strokeStyle = 'rgba(163,212,122,0.35)'; ctx.lineWidth = 6; ctx.stroke();
+      ctx.beginPath(); ctx.arc(x, y, 4.5, 0, Math.PI*2);
+      ctx.fillStyle = '#a3d47a'; ctx.fill();
+      ctx.font = '600 13px JetBrains Mono';
+      ctx.fillStyle = '#a3d47a';
+      ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+      ctx.fillText('◄ 633', x + 12, y);
+      ctx.restore();
+    }
+  }]
+});
+</script>
+</body>
+</html>
