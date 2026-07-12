@@ -231,8 +231,8 @@
       <div class="phase-row"><span class="phase-name">P3: INFILTRATION</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100%</span></div>
       <div class="phase-row"><span class="phase-name">P4: DEEP COVER</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100%</span></div>
       <div class="phase-row"><span class="phase-name">P5: ELITE OPS</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100%</span></div>
-      <div class="phase-row"><span class="phase-name" style="color: var(--amber);">P6: SUMMIT ACCESS ▶</span><span class="phase-bar"><span class="phase-bar-fill progress" style="width:0%"></span></span><span class="phase-pct" style="color: var(--amber)">0%</span></div>
-      <div class="phase-row"><span class="phase-name locked">P7: FINAL BREACH 🔒</span><span class="phase-bar"><span class="phase-bar-fill locked" style="width:0%"></span></span><span class="phase-pct" style="color: var(--ink-soft)">0%</span></div>
+      <div class="phase-row"><span class="phase-name" style="color: var(--amber);">P6: SUMMIT ACCESS ▶</span><span class="phase-bar"><span class="phase-bar-fill progress" style="width:59%"></span></span><span class="phase-pct" style="color: var(--amber)">59%</span></div>
+      <div class="phase-row"><span class="phase-name" style="color: var(--green);">P7: FINAL BREACH ▶</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100% (74/74)</span></div>
     </div>
 
     <div class="panel">
@@ -275,7 +275,8 @@ const actual = [
   {x:'2026-07-03', y:442},
   {x:'2026-07-05', y:472},
   {x:'2026-07-06', y:546},
-  {x:'2026-07-08', y:574}
+  {x:'2026-07-08', y:574},
+  {x:'2026-07-11', y:633}
 ];
 
 // Gradient fill for the area under the line
@@ -343,11 +344,5 @@ new Chart(canvas, {
       ctx.font = '600 13px JetBrains Mono';
       ctx.fillStyle = '#a3d47a';
       ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-      ctx.fillText('◄ 574', x + 12, y);
-      ctx.restore();
-    }
-  }]
-});
-</script>
-</body>
-</html>
+      ctx.fillText('◄ 633', x + 12, y);
+      ctx.
