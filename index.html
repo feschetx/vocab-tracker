@@ -231,8 +231,9 @@
       <div class="phase-row"><span class="phase-name">P3: INFILTRATION</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100%</span></div>
       <div class="phase-row"><span class="phase-name">P4: DEEP COVER</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100%</span></div>
       <div class="phase-row"><span class="phase-name">P5: ELITE OPS</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100%</span></div>
-      <div class="phase-row"><span class="phase-name" style="color: var(--amber);">P6: SUMMIT ACCESS ▶</span><span class="phase-bar"><span class="phase-bar-fill progress" style="width:59%"></span></span><span class="phase-pct" style="color: var(--amber)">59%</span></div>
-      <div class="phase-row"><span class="phase-name" style="color: var(--green);">P7: FINAL BREACH ▶</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100% (74/74)</span></div>
+      <div class="phase-row"><span class="phase-name" style="color: var(--amber);">P6: SUMMIT ASSAULT ▶</span><span class="phase-bar"><span class="phase-bar-fill progress" style="width:59%"></span></span><span class="phase-pct" style="color: var(--amber)">59% (59/100)</span></div>
+      <div class="phase-row"><span class="phase-name" style="color: var(--green);">P7: TUTOR INTEL ✓</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100% (74/74)</span></div>
+      <div class="phase-row"><span class="phase-name" style="color: var(--amber);">P8: FINAL BREACH ▶</span><span class="phase-bar"><span class="phase-bar-fill progress" style="width:0%"></span></span><span class="phase-pct" style="color: var(--amber)">0% (0/117)</span></div>
     </div>
 
     <div class="panel">
@@ -338,11 +339,4 @@ new Chart(canvas, {
       // Glow ring around the last point
       ctx.beginPath(); ctx.arc(x, y, 8, 0, Math.PI*2);
       ctx.strokeStyle = 'rgba(163,212,122,0.35)'; ctx.lineWidth = 6; ctx.stroke();
-      ctx.beginPath(); ctx.arc(x, y, 4.5, 0, Math.PI*2);
-      ctx.fillStyle = '#a3d47a'; ctx.fill();
-      // Label to the right
-      ctx.font = '600 13px JetBrains Mono';
-      ctx.fillStyle = '#a3d47a';
-      ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-      ctx.fillText('◄ 633', x + 12, y);
-      ctx.
+      ctx.beginPath(); ctx.arc
