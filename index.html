@@ -197,27 +197,27 @@
   <div class="stat-row">
     <div class="stat">
       <div class="stat-label">// IN PLAY</div>
-      <div class="stat-value">690</div>
-      <div class="stat-sub green">▲ +51 since Jul 11</div>
+      <div class="stat-value">664</div>
+      <div class="stat-sub green">▲ +25 since Jul 11</div>
     </div>
     <div class="stat amber">
       <div class="stat-label">// TARGET</div>
       <div class="stat-value">750</div>
-      <div class="stat-sub">60 remaining</div>
+      <div class="stat-sub">86 remaining</div>
     </div>
     <div class="stat">
       <div class="stat-label">// COMPLETE</div>
-      <div class="stat-value green">92.0%</div>
+      <div class="stat-value green">88.5%</div>
       <div class="stat-sub">of mission</div>
     </div>
     <div class="stat blue">
       <div class="stat-label">// 7D VELOCITY</div>
-      <div class="stat-value">16.6</div>
+      <div class="stat-value">12.9</div>
       <div class="stat-sub">units / day</div>
     </div>
     <div class="stat red">
       <div class="stat-label">// EST. ETA</div>
-      <div class="stat-value">JUL 19</div>
+      <div class="stat-value">JUL 22</div>
       <div class="stat-sub">at current pace</div>
     </div>
   </div>
@@ -231,9 +231,9 @@
       <div class="phase-row"><span class="phase-name">P3: INFILTRATION</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100%</span></div>
       <div class="phase-row"><span class="phase-name">P4: DEEP COVER</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100%</span></div>
       <div class="phase-row"><span class="phase-name">P5: ELITE OPS</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100%</span></div>
-      <div class="phase-row"><span class="phase-name" style="color: var(--green);">P6: SUMMIT ASSAULT ✓</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100% (100/100)</span></div>
+      <div class="phase-row"><span class="phase-name" style="color: var(--amber);">P6: SUMMIT ASSAULT ▶</span><span class="phase-bar"><span class="phase-bar-fill progress" style="width:90%"></span></span><span class="phase-pct" style="color: var(--amber)">90% (90/100)</span></div>
       <div class="phase-row"><span class="phase-name" style="color: var(--green);">P7: TUTOR INTEL ✓</span><span class="phase-bar"><span class="phase-bar-fill" style="width:100%"></span></span><span class="phase-pct" style="color: var(--green)">100% (74/74)</span></div>
-      <div class="phase-row"><span class="phase-name" style="color: var(--amber);">P8: FINAL BREACH ▶</span><span class="phase-bar"><span class="phase-bar-fill progress" style="width:21%"></span></span><span class="phase-pct" style="color: var(--amber)">21% (16/76)</span></div>
+      <div class="phase-row"><span class="phase-name locked">P8: FINAL BREACH 🔒</span><span class="phase-bar"><span class="phase-bar-fill locked" style="width:0%"></span></span><span class="phase-pct" style="color: var(--ink-soft)">0% (0/76)</span></div>
     </div>
 
     <div class="panel">
@@ -259,7 +259,7 @@
 
   <!-- Ticker -->
   <div class="ticker">
-    [TICKER] · IN PLAY <span class="hi">690</span> · B1-B6 <span class="hi">DEPLOYED (600)</span> · TUTOR B7 <span class="hi">+74</span> · B8 <span class="warn">16/76</span> · 60 REMAINING · ETA <span class="warn">JUL 19</span> · LAST TRANSMISSION 2026-07-15 · CONTINUE MISSION
+    [TICKER] · IN PLAY <span class="hi">664</span> · B1-B5 <span class="hi">DEPLOYED (500)</span> · TUTOR B7 <span class="hi">+74</span> · B6 <span class="warn">90/100</span> · 86 REMAINING · ETA <span class="warn">JUL 22</span> · LAST TRANSMISSION 2026-07-15 · CONTINUE MISSION
   </div>
 
 </div>
@@ -289,10 +289,10 @@ const actual = [
   {x:'2026-07-06', y:546},
   {x:'2026-07-08', y:574},
   {x:'2026-07-11', y:639},
-  {x:'2026-07-12', y:652},
-  {x:'2026-07-13', y:665},
-  {x:'2026-07-14', y:677},
-  {x:'2026-07-15', y:690}
+  {x:'2026-07-12', y:645},
+  {x:'2026-07-13', y:652},
+  {x:'2026-07-14', y:658},
+  {x:'2026-07-15', y:664}
 ];
 
 // Gradient fill for the area under the line
@@ -358,7 +358,7 @@ new Chart(canvas, {
       ctx.font = '600 13px JetBrains Mono';
       ctx.fillStyle = '#a3d47a';
       ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-      ctx.fillText('◄ 690', x + 12, y);
+      ctx.fillText('◄ 664', x + 12, y);
       ctx.restore();
     }
   }]
