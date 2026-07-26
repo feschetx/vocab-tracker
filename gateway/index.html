@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raphael · Gateway Application — Review &amp; To-Do</title>
+<style>
+  :root{
+    --bg:#f6f8fa; --card:#ffffff; --ink:#1f2d3d; --muted:#5c6b7a;
+    --navy:#134e6f; --teal:#0e7c7b; --line:#e3e9ee;
+    --red:#c0392b; --red-bg:#fdf0ee;
+    --amber:#9a6700; --amber-bg:#fff8e6;
+    --green:#1e7b45; --green-bg:#eef8f1;
+    --grey:#5c6b7a; --grey-bg:#f0f3f6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       background:var(--bg); color:var(--ink); line-height:1.55; padding:0 0 60px;}
+  .wrap{max-width:860px; margin:0 auto; padding:0 18px;}
+  header{background:linear-gradient(135deg,#134e6f 0%,#0e7c7b 100%); color:#fff; padding:34px 0 28px; margin-bottom:26px;}
+  header h1{font-size:1.55rem; font-weight:700; letter-spacing:.2px;}
+  header p.sub{margin-top:6px; opacity:.92; font-size:.95rem;}
+  .pills{margin-top:14px; display:flex; flex-wrap:wrap; gap:8px;}
+  .pill{background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35);
+        border-radius:999px; padding:4px 12px; font-size:.8rem; font-weight:600;}
+  h2{font-size:1.05rem; margin:30px 0 12px; display:flex; align-items:center; gap:8px;}
+  .tag{font-size:.7rem; font-weight:700; letter-spacing:.4px; border-radius:6px; padding:2px 8px; text-transform:uppercase;}
+  .tag.red{color:var(--red); background:var(--red-bg);}
+  .tag.amber{color:var(--amber); background:var(--amber-bg);}
+  .tag.green{color:var(--green); background:var(--green-bg);}
+  .tag.grey{color:var(--grey); background:var(--grey-bg);}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:4px 0; box-shadow:0 1px 2px rgba(16,42,67,.04);}
+  .item{display:flex; gap:12px; padding:13px 16px; border-bottom:1px solid var(--line); font-size:.94rem;}
+  .item:last-child{border-bottom:none;}
+  .item .box{flex:0 0 auto; width:20px; height:20px; margin-top:2px; border-radius:5px; border:2px solid #b8c4cf; background:#fff;}
+  .item.done .box{border-color:var(--green); background:var(--green); position:relative;}
+  .item.done .box::after{content:"✓"; color:#fff; font-size:.8rem; font-weight:800; position:absolute; top:50%; left:50%; transform:translate(-50%,-52%);}
+  .item b{font-weight:650;}
+  .item .where{display:inline-block; font-size:.72rem; font-weight:700; color:var(--navy); background:#eaf1f6;
+               border-radius:5px; padding:1px 7px; margin-left:6px; vertical-align:1px; white-space:nowrap;}
+  .item p{color:var(--muted); font-size:.87rem; margin-top:3px;}
+  .banner{border-radius:12px; padding:14px 16px; font-size:.92rem; margin-top:10px;}
+  .banner.amber{background:var(--amber-bg); border:1px solid #eeddb0; color:#6b4b00;}
+  .banner b{font-weight:700;}
+  details{margin-top:10px;}
+  details summary{cursor:pointer; font-weight:650; font-size:.95rem; color:var(--navy); padding:10px 4px; user-select:none;}
+  .donegrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:0 18px;}
+  .donegrid .item{padding:9px 12px; font-size:.88rem;}
+  footer{margin-top:44px; text-align:center; color:var(--muted); font-size:.8rem;}
+  .updated{font-size:.8rem; opacity:.85; margin-top:10px;}
+  @media (max-width:520px){ header h1{font-size:1.25rem;} .donegrid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Raphael · Boarding School Application</h1>
+    <p class="sub">Gateway to Prep Schools (ApplyWithUs) — candidate profile review &amp; to-do list</p>
+    <div class="pills">
+      <span class="pill">🎯 Fall 2027 entry · Grade 9</span>
+      <span class="pill">⏳ Deadline: mid-Jan 2027</span>
+      <span class="pill">📝 SSAT Upper Level · Oct 2026</span>
+    </div>
+    <p class="updated">Last reviewed: 26 July 2026 · Part 1 verified ✓ · Part 2 (Educational Background + Interests &amp; Achievements) reviewed ✓</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h2><span class="tag red">Fix now</span> Errors &amp; required changes</h2>
+  <div class="card">
+    <div class="item"><span class="box"></span><div>
+      <b>1. Parent/Guardian email → switch to Dad's own address</b><span class="where">Part 1 · Contact</span>
+      <p>Currently identical to the candidate email. Parent-specific communications (decisions, interviews, billing) should reach a parent inbox.</p>
+    </div></div>
+    <div class="item"><span class="box"></span><div>
+      <b>2. HKIS school address spelling</b><span class="where">Part 2 · Educational Background</span>
+      <p>Form says "1 Redhill Road" — official is "1 Red Hill Road" (that's the High School). HKIS lists Middle School + Main Office at <b>700 Tai Tam Reservoir Road, Tai Tam</b> — the more precise choice for a G8 student.</p>
+    </div></div>
+    <div class="item"><span class="box"></span><div>
+      <b>3. Cat fostering "2021 – Present"</b><span class="where">Part 2 · Achievements box</span>
+      <p>Records say fostering ended in 2025 → change to "2021–2025" (unless it has resumed).</p>
+    </div></div>
+    <div class="item"><span class="box"></span><div>
+      <b>4. Previous school full name</b><span class="where">Part 1 · Academic + Part 2 · Ed. Background</span>
+      <p>"French International School" → "<b>French International School of Hong Kong</b>" in both places.</p>
+    </div></div>
+  </div>
+
+  <h2><span class="tag amber">Verify</span> Confirm with Raphael before submitting</h2>
+  <div class="card">
+    <div class="item"><span class="box"></span><div>
+      <b>5. Taekwondo belt: "Red-Black" vs "Red"</b>
+      <p>Form says Red-Black Belt; earlier records said Red. Confirm current belt and keep the CV identical.</p>
+    </div></div>
+    <div class="item"><span class="box"></span><div>
+      <b>6. Fencing years: 7 vs ~10</b>
+      <p>Form says 7 years; records suggest 2015–2025. Pick the defensible number and match the CV.</p>
+    </div></div>
+    <div class="item"><span class="box"></span><div>
+      <b>7. Trumpet — "First Trumpet" in Symphonic Band</b>
+      <p>Symphonic Band for G8 is right; confirm the first-chair claim is actually settled before school starts.</p>
+    </div></div>
+    <div class="item"><span class="box"></span><div>
+      <b>8. Fencing rankings "HKSSF no.30 · Paris Foil no.36"</b>
+      <p>Make sure these are documented/defensible — interviewers do ask about listed rankings.</p>
+    </div></div>
+  </div>
+
+  <h2><span class="tag green">Add</span> Missing content — real opportunities</h2>
+  <div class="card">
+    <div class="item"><span class="box"></span><div>
+      <b>9. Achievements box is only 424 / 1500 characters</b><span class="where">Part 2 · Achievements</span>
+      <p>Add: <b>CTY SCAT High Honors</b> (Johns Hopkins — US admissions know exactly what this means) · <b>CTY "Examining the Evidence"</b> course, Jul 2025, excellent evaluation · <b>St&nbsp;Baldrick's</b> under Community Service (3 years organizing committee, 2nd Highest Fundraising Team, 2026 #4 individual fundraiser).</p>
+    </div></div>
+    <div class="item"><span class="box"></span><div>
+      <b>10. Academic interest checkboxes — only 3 of 8 ticked</b>
+      <p>English, Math, Computer Science today. Consider adding <b>World Languages</b> (DELF A2 at 93%, Mandarin), <b>Science</b>, and <b>Visual &amp; Performing Arts</b> (First Trumpet). Tick only what's honest — but 3 undersells him.</p>
+    </div></div>
+  </div>
+
+  <h2><span class="tag grey">Polish</span> Minor / cosmetic</h2>
+  <div class="card">
+    <div class="item"><span class="box"></span><div>
+      <b>11. Move FIS up into the first "Other Schools" block</b>
+      <p>It currently sits in "Additional Other Schools" while the first block is empty — avoids a blank block in the print preview.</p>
+    </div></div>
+    <div class="item"><span class="box"></span><div>
+      <b>12. Cross country "Varsity" → "School Team"</b>
+      <p>"Varsity" implies high school to US readers; middle-school team reads cleaner as "School Team" (keep Varsity only if HKIS officially uses it).</p>
+    </div></div>
+    <div class="item"><span class="box"></span><div>
+      <b>13. Weeks-per-year values run high</b>
+      <p>Soccer 46 · Trumpet 44 · Referee 40. Keep only if training genuinely runs through most holidays.</p>
+    </div></div>
+    <div class="item"><span class="box"></span><div>
+      <b>14. PADI wording</b>
+      <p>At his age the certification is formally "Junior Open Water Diver" — mirror the card exactly.</p>
+    </div></div>
+  </div>
+
+  <h2><span class="tag amber">Watch</span> Calendar &amp; not-yet-reviewed</h2>
+  <div class="banner amber">
+    <b>Passports:</b> HKSAR expires <b>Apr 2027</b>, French expires <b>Dec 2027</b> — both too early for Fall 2027 enrollment + student-visa season. <b>Renew early 2027.</b> Both are valid ID for the Oct 2026 SSAT.
+  </div>
+  <div class="banner amber" style="margin-top:8px;">
+    <b>Still to review:</b> Biographical Information · Family Information (×2) · Additional Information · Review-in-Order-to-Submit pages · My Schools list · Payment · Parts 1 &amp; 3 checklists · bottom of the scrollable achievements box.
+  </div>
+
+  <details open>
+    <summary>✅ Verified correct — no action needed (17 checks)</summary>
+    <div class="card donegrid" style="margin-top:6px;">
+      <div class="item done"><span class="box"></span><div>Full legal name matches both passports exactly (MRZ-checked)</div></div>
+      <div class="item done"><span class="box"></span><div>Date of birth verified against both passports (incl. mm/dd format trap)</div></div>
+      <div class="item done"><span class="box"></span><div>Gender, suffix, preferred name</div></div>
+      <div class="item done"><span class="box"></span><div>Present Grade 8 — correct for 2026-27, applying G9 for Fall 2027</div></div>
+      <div class="item done"><span class="box"></span><div>Present school HKIS · ends after Grade 12 · Private School: Day Student</div></div>
+      <div class="item done"><span class="box"></span><div>HKIS start Aug 2023 — start date confirmed; "fewer than 2 years: No" correct</div></div>
+      <div class="item done"><span class="box"></span><div>FIS campus confirmed: Jardine's Lookout, 34 Price Road (address verified)</div></div>
+      <div class="item done"><span class="box"></span><div>FIS dates Aug 2016 → Jun 2023 consistent with age/grades</div></div>
+      <div class="item done"><span class="box"></span><div>CIS omission correct — "Other Schools" only requires schools since 6th grade</div></div>
+      <div class="item done"><span class="box"></span><div>St Baldrick's "2nd Highest Fundraising Team" confirmed (snapshot proof exists)</div></div>
+      <div class="item done"><span class="box"></span><div>Discipline questions: No / No, explanation blank</div></div>
+      <div class="item done"><span class="box"></span><div>All activities within the "past two years" rule</div></div>
+      <div class="item done"><span class="box"></span><div>"Will you continue?" answers all accurate — incl. fencing = No (stopped 2025)</div></div>
+      <div class="item done"><span class="box"></span><div>Hours-per-week load believable (~15-19h in season) — no overclaiming</div></div>
+      <div class="item done"><span class="box"></span><div>Home address current &amp; correctly formatted; HK city/province/zip conventions consistent</div></div>
+      <div class="item done"><span class="box"></span><div>Contact phone confirmed intentional; candidate email confirmed OK</div></div>
+      <div class="item done"><span class="box"></span><div>Honor Roll G6 &amp; G7 · DELF A2 (93%) · Le Rosey Academic Excellence Award · PADI — all consistent with records</div></div>
+    </div>
+  </details>
+
+  <footer>
+    Prepared by Claude for the Feschet family · Updated as items close · 26 Jul 2026<br>
+    No personal identifiers (birth date, addresses, contact details, document numbers) are published on this page by design.
+  </footer>
+</div>
+
+</body>
+</html>
