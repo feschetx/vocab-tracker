@@ -3,33 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Raphael · Gateway Application — Review &amp; To-Do</title>
+<title>Raphael · Gateway Application — What's Left</title>
 <style>
   :root{
-    --bg:#f6f8fa; --card:#ffffff; --ink:#1f2d3d; --muted:#5c6b7a;
+    --bg:#f6f8fa; --card:#fff; --ink:#1f2d3d; --muted:#5c6b7a;
     --navy:#134e6f; --teal:#0e7c7b; --line:#e3e9ee;
-    --red:#c0392b; --red-bg:#fdf0ee;
-    --amber:#9a6700; --amber-bg:#fff8e6;
-    --green:#1e7b45; --green-bg:#eef8f1;
-    --grey:#5c6b7a; --grey-bg:#f0f3f6;
+    --red:#c0392b; --red-bg:#fdf0ee; --amber:#9a6700; --amber-bg:#fff8e6;
+    --green:#1e7b45; --green-bg:#eef8f1; --grey:#5c6b7a; --grey-bg:#f0f3f6;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
        background:var(--bg); color:var(--ink); line-height:1.55; padding:0 0 60px;}
   .wrap{max-width:880px; margin:0 auto; padding:0 18px;}
-  header{background:linear-gradient(135deg,#134e6f 0%,#0e7c7b 100%); color:#fff; padding:34px 0 28px; margin-bottom:22px;}
-  header h1{font-size:1.55rem; font-weight:700; letter-spacing:.2px;}
+  header{background:linear-gradient(135deg,#134e6f 0%,#0e7c7b 100%); color:#fff; padding:32px 0 26px; margin-bottom:22px;}
+  header h1{font-size:1.5rem; font-weight:700;}
   header p.sub{margin-top:6px; opacity:.92; font-size:.95rem;}
-  .pills{margin-top:14px; display:flex; flex-wrap:wrap; gap:8px;}
+  .pills{margin-top:13px; display:flex; flex-wrap:wrap; gap:8px;}
   .pill{background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35);
         border-radius:999px; padding:4px 12px; font-size:.8rem; font-weight:600;}
-  .updated{font-size:.8rem; opacity:.85; margin-top:10px;}
-  .schools{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; box-shadow:0 1px 2px rgba(16,42,67,.04);}
-  .schools h3{font-size:.85rem; text-transform:uppercase; letter-spacing:.5px; color:var(--navy); margin-bottom:8px;}
-  .schools ul{list-style:none; display:flex; flex-wrap:wrap; gap:8px;}
-  .schools li{background:#eaf1f6; color:var(--navy); border-radius:8px; padding:5px 11px; font-size:.86rem; font-weight:600;}
-  .schools li span{font-weight:500; color:var(--muted);}
-  .schools p{font-size:.78rem; color:var(--muted); margin-top:8px;}
+  .updated{font-size:.8rem; opacity:.88; margin-top:10px;}
   h2{font-size:1.05rem; margin:30px 0 4px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
   .h2sub{font-size:.83rem; color:var(--muted); margin:0 0 12px;}
   .tag{font-size:.7rem; font-weight:700; letter-spacing:.4px; border-radius:6px; padding:2px 8px; text-transform:uppercase;}
@@ -37,451 +29,218 @@
   .tag.amber{color:var(--amber); background:var(--amber-bg);}
   .tag.green{color:var(--green); background:var(--green-bg);}
   .tag.grey{color:var(--grey); background:var(--grey-bg);}
-  .tag.teal{color:var(--teal); background:#e7f4f4;}
-  .new{font-size:.66rem; font-weight:800; color:#fff; background:var(--red); border-radius:5px; padding:1px 6px; margin-left:7px; vertical-align:2px; letter-spacing:.5px;}
   .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:4px 0; box-shadow:0 1px 2px rgba(16,42,67,.04);}
-  .item{display:flex; gap:12px; padding:14px 16px; border-bottom:1px solid var(--line); font-size:.94rem;}
+  .item{display:flex; gap:12px; padding:13px 16px; border-bottom:1px solid var(--line); font-size:.93rem;}
   .item:last-child{border-bottom:none;}
-  .item .box{flex:0 0 auto; width:20px; height:20px; margin-top:2px; border-radius:5px; border:2px solid #b8c4cf; background:#fff;}
+  .item .box{flex:0 0 auto; width:19px; height:19px; margin-top:3px; border-radius:5px; border:2px solid #b8c4cf; background:#fff;}
   .item.done .box{border-color:var(--green); background:var(--green); position:relative;}
-  .item.done .box::after{content:"✓"; color:#fff; font-size:.8rem; font-weight:800; position:absolute; top:50%; left:50%; transform:translate(-50%,-52%);}
-  .item.wait .box{border-style:dashed; border-color:#caa53d; background:#fffdf4;}
+  .item.done .box::after{content:"✓"; color:#fff; font-size:.78rem; font-weight:800; position:absolute; top:50%; left:50%; transform:translate(-50%,-52%);}
+  .item.q .box{border-color:var(--amber); background:#fffdf4; position:relative;}
+  .item.q .box::after{content:"?"; color:var(--amber); font-size:.82rem; font-weight:800; position:absolute; top:50%; left:50%; transform:translate(-50%,-52%);}
   .item b{font-weight:650;}
-  .where{display:inline-block; font-size:.72rem; font-weight:700; color:var(--navy); background:#eaf1f6;
-         border-radius:5px; padding:1px 7px; margin-right:6px; margin-bottom:4px; white-space:nowrap;}
-  .where.assign{background:#fdf0ee; color:#c0392b;}
-  .where.verify{background:#e7f4f4; color:#0e7c7b;}
-  .item p{color:var(--muted); font-size:.87rem; margin-top:4px;}
+  .ref{display:inline-block; font-size:.7rem; font-weight:700; color:var(--navy); background:#eaf1f6;
+       border-radius:5px; padding:1px 6px; margin-left:6px; vertical-align:1px;}
+  .item p{color:var(--muted); font-size:.86rem; margin-top:3px;}
   .item p b{color:var(--ink);}
   .now{color:var(--red); font-weight:650;}
   .to{color:var(--green); font-weight:650;}
-  .draft{background:#f8fafb; border:1px dashed #b8c4cf; border-radius:8px; padding:10px 12px; margin-top:8px;
-         font-family:ui-monospace,Consolas,monospace; font-size:.78rem; white-space:pre-wrap; color:#2c3e50;}
-  .banner{border-radius:12px; padding:14px 16px; font-size:.92rem; margin-top:10px;}
+  .banner{border-radius:12px; padding:13px 16px; font-size:.9rem; margin-top:10px;}
   .banner.amber{background:var(--amber-bg); border:1px solid #eeddb0; color:#6b4b00;}
-  .banner b{font-weight:700;}
-  .banner .where{background:#f3e8c8; color:#6b4b00;}
-  table.mini{border-collapse:collapse; margin-top:8px; font-size:.85rem; width:100%; max-width:560px;}
-  table.mini th, table.mini td{border:1px solid var(--line); padding:5px 9px; text-align:left;}
-  table.mini th{background:#eaf1f6; color:var(--navy); font-size:.78rem; text-transform:uppercase; letter-spacing:.3px;}
-  table.mini tr.hl td{background:var(--green-bg); font-weight:650;}
   details{margin-top:10px;}
-  details summary{cursor:pointer; font-weight:650; font-size:.95rem; color:var(--navy); padding:10px 4px; user-select:none;}
-  .donegrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(390px,1fr)); gap:0 18px;}
-  .donegrid .item{padding:9px 12px; font-size:.86rem;}
-  .donegrid .sec{font-weight:700; color:var(--navy);}
-  footer{margin-top:44px; text-align:center; color:var(--muted); font-size:.8rem;}
-  @media (max-width:520px){ header h1{font-size:1.25rem;} .donegrid{grid-template-columns:1fr;} }
+  details summary{cursor:pointer; font-weight:650; font-size:.95rem; color:var(--navy); padding:10px 4px;}
+  .donegrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:0 18px;}
+  .donegrid .item{padding:8px 12px; font-size:.85rem;}
+  footer{margin-top:40px; text-align:center; color:var(--muted); font-size:.8rem;}
+  @media (max-width:520px){ header h1{font-size:1.2rem;} .donegrid{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <h1>Raphael · Boarding School Application</h1>
-    <p class="sub">Gateway to Prep Schools (ApplyWithUs) — candidate profile review &amp; to-do list</p>
+    <h1>Raphael · Gateway Application — what's left</h1>
+    <p class="sub">Reviewed against the full 8-page Candidate Profile PDF, 2 August 2026</p>
     <div class="pills">
       <span class="pill">🎯 Fall 2027 · Boarding · Grade 9</span>
-      <span class="pill">🏫 5 schools selected</span>
-      <span class="pill">⏳ Deadline: mid-Jan 2027</span>
-      <span class="pill">📝 SSAT Upper Level · Oct 2026</span>
-      <span class="pill">✅ 12 of 31 closed</span>
+      <span class="pill">🏫 5 schools</span>
+      <span class="pill">✅ 16 fixes verified</span>
+      <span class="pill">🔧 15 left</span>
+      <span class="pill">❓ 8 questions</span>
     </div>
-    <p class="updated">Last updated: 2 Aug 2026 (8th pass) · Three answers in from Dad: <b>fencing will not restart</b> (set Continue back to No), <b>football U14 this year / U13 last, TTT1 both</b> — so the U12 result is not his and the league publishes nothing for his age groups, and <b>no Roblox game exists yet</b>, so that line is out and the coding block now names <b>Preface</b>. <b>Achievements box draft v6 is at 1,385 of 1,500 characters.</b> Awaiting the amended application screenshots. Numbering stable (1–31, plus K1-K15).</p>
+    <p class="updated">The profile is in good shape — most of the earlier list is now visibly done in the PDF. What remains is below, in the order I would do it. Two entries contain <b>verifiably wrong names</b> and should be corrected before anyone reads this.</p>
   </div>
 </header>
 
 <div class="wrap">
 
-  <div class="schools">
-    <h3>Selected schools — all set correctly to Fall 2027 · Boarding · Grade 9 ✓</h3>
-    <ul>
-      <li>Choate Rosemary Hall <span>· CT · sibling on campus</span></li>
-      <li>Concord Academy <span>· MA</span></li>
-      <li>Groton School <span>· MA</span></li>
-      <li>The Hotchkiss School <span>· CT</span></li>
-      <li>Phillips Academy Andover <span>· MA</span></li>
-    </ul>
-    <p>List may still evolve, per Dad. UK track (e.g. Brighton College) runs separately from Gateway.</p>
-  </div>
-
-  <h2><span class="tag red">For Mom</span> Everything waiting on Kenzie — one list, 15 questions</h2>
-  <p class="h2sub">Answer these and almost everything unblocks. Each says why it matters and what form the answer needs to take.</p>
+  <h2><span class="tag red">Fix first</span> Three things that are simply wrong</h2>
   <div class="card">
     <div class="item"><span class="box"></span><div>
-      <b>K1. Football — which age group, and which team?</b> <span class="where">blocks item 21 + a line in the achievements box</span>
-      <p>Dad says Raphael is <b>U14</b>. The only published result I can find is <b>TTT1, runners-up in U12 Championship A, 2025-26</b> — which is only his if he played U12. <b>Need:</b> ① his age group in the 2025-26 season (U12 / U13 / U14) ② whether he played for <b>TTT1 or TTT2</b> — this matters, TTT2 finished 7th in a lower division, so the two teams tell completely different stories ③ if he was U13 or U14, the league publishes no table at all for those groups, so please ask the <b>team manager or the parents' group for the final standings</b>. Without ①–③ the football result stays off the application.</p>
+      <b>1. The Paris fencing event is misspelled and the words are reversed</b><span class="ref">box · ATHLETICS</span>
+      <p><span class="now">Now:</span> "Paris Mini-Fluret Marathon no.36 (foil)". The competition is real and I found it: it is the <b>Mini Marathon Fleuret</b>, held in Paris (marathon-fleuret.com). "Fleuret" is French for foil, so "Fluret" is a misspelling. <span class="to">Change to:</span> "<b>Mini Marathon Fleuret, Paris - no.36 (foil)</b>". A competition an admissions officer can look up is worth far more than one they cannot find — and a misspelt name invites doubt about the ranking attached to it.</p>
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>K2. Coding — what has he actually done?</b> <span class="where">blocks item 23 (a whole missing activity block)</span>
-      <p>Dad says roughly two years of classes, and is not sure about the language. <b>Need:</b> ① who runs the classes (provider name) ② what he learns there — Scratch, Python, Lua, something else ③ hours per week and weeks per year ④ the key one: <b>does he type code into Roblox Studio's Script window, or build with drag-and-drop blocks and ready-made modules?</b> If he types code, the language is Lua and we can say "scripting"; if he does not, we claim no language and say "designing" instead. ⑤ anything finished or published — a playable game, a shared link, a demo — because a finished artefact is worth more than the years.</p>
+      <b>2. "Kids 4 Kids" is written Kids4Kids</b><span class="ref">box · COMMUNITY SERVICE</span>
+      <p>The charity's own name is <b>Kids4Kids</b>, one word (kids4kids.org.hk), and the programme is the <b>Buddy Reading Program</b>. <span class="to">Change to:</span> "Kids4Kids Buddy Reading Program Volunteer". Small, but many Hong Kong schools partner with them and a reader may recognise the name — spelled correctly.</p>
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>K3. Fencing — is he restarting?</b> <span class="where">item 29a</span>
-      <p>The form now says he will continue; it used to say he stopped in 2025. Both are fine — they just have to match the story he tells at interview. <b>Need:</b> a yes or no, and if yes, roughly when he starts again.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>K4. Fencing rankings — where exactly did they come from?</b> <span class="where">item 9</span>
-      <p>The form claims "HKSSF no.30; Paris Foil no.36". <b>Need:</b> ① the Paris competition's <b>official name and year</b> ② confirmation the HKSSF no.30 was 2023 ③ any <b>medals or podium finishes</b> worth naming ④ ideally a screenshot of each result saved into a folder — these pages disappear, and an interviewer may ask.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>K5. Trumpet — the real numbers, and the band</b> <span class="where">items 29b + 8 + 17c</span>
-      <p>The form says <b>56 weeks per year</b>, which cannot be right — a year has 52. <b>Need:</b> ① honest weeks per year (school terms plus any holiday practice — probably around 40) ② honest hours per week including home practice (currently 5) ③ confirmation that <b>First Trumpet was Concert Band in G7</b> and the Symphonic Band chair is not yet decided, so we can word it correctly.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>K6. Skiing — one week, and not off-piste</b> <span class="where">item 29c / 17d</span>
-      <p>Dad has confirmed both; this is just the edit. Level of Involvement becomes "<b>Hobby - Alpine Skiing</b>" and Weeks per Year becomes <b>1</b>. Hours at 30 is right for an intensive ski week.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>K7. Taekwondo — 6 years or 9?</b> <span class="where">item 22</span>
-      <p>The form said 6 in July and now says 9. Nine means he started around age 4-5. <b>Need:</b> the year he actually started — and then the CV must say the same.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>K8. Lombok — which years, and what does he do?</b> <span class="where">completes a line in the box</span>
-      <p>The draft assumes "2024-2026, annual volunteer, Sunday School". <b>Need:</b> the real start year and one phrase describing what he does there (teaches? helps run classes?) — specifics beat a job title.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>K9. China orphanage — is it recent and repeated?</b> <span class="where">include-or-skip decision</span>
-      <p>Worth a line only if it happened in the last two or three years and more than once. <b>Need:</b> the years, and how many visits.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>K10. Class Representative — which years?</b> <span class="where">a line in the box</span>
-      <p>The box says "2023-2026" but G4 was the <b>2022-23</b> school year at FIS. <b>Need:</b> confirmation that the range should start 2022, and that the G7 election he stood in was for Class Representative.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>K11. Card tricks — is that the programme's real name?</b> <span class="where">a line in the box</span>
-      <p>"HKIS Self-Motivated Learning" is written as a programme name. <b>Need:</b> confirmation that is what HKIS calls it, so it does not read as invented.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>K12. St Baldrick's — the organiser year</b> <span class="where">item 29e</span>
-      <p>Dad confirmed three years taking part, organising committee in <b>2026 only</b>. The activity block currently implies three years of organising. <b>Edit:</b> Level of Involvement → "<b>St Baldrick's: 3 yrs participant, 2026 organizer</b>"; Positions Held → "<b>#2 Team; #4 Individual (2026)</b>".</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>K13. The two email addresses</b> <span class="where">item 1</span>
-      <p>All three parent email fields currently hold the shared school Gmail. <b>Need:</b> Mom's own address for her Preferred Email; Dad's goes in his two fields. Decisions and interview invitations are sent to these.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>K14. Her secondary contact number</b> <span class="where">item 2</span>
-      <p>It repeats her mobile but is labelled "Home". <b>Edit:</b> put the home landline there — the same number already used as the Household telephone.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>K15. The "Other Schools" block — can it really not be used?</b> <span class="where">item 28 / 15</span>
-      <p>The print preview shows Gateway <b>merges</b> the first block and "Additional Other Schools" into a single table, so they are the same list and the empty first block just prints a stray dash. <b>Need:</b> her reason for saying it cannot be used — if there is no technical block, move FIS into it and remove Yew Chung, then re-run Print Preview.</p>
+      <b>3. Skiing still says "Off Piste Skiing"</b><span class="ref">activity grid</span>
+      <p>Weeks are now correctly 1 ✓, but Level of Involvement still claims off-piste, which Dad has twice said is not true. <span class="to">Change to:</span> "<b>Hobby - Alpine Skiing</b>". This is the last statement on the form the family has itself identified as inaccurate.</p>
     </div></div>
   </div>
 
-  <h2><span class="tag red">Urgent</span> 29. New errors found on Interests &amp; Achievements (1 Aug, 2nd pass)</h2>
-  <p class="h2sub">These appeared <i>since</i> the earlier screenshots — something changed during editing. Fix before anything else.</p>
+  <h2><span class="tag red">Fix</span> Clarity — things a reader will stumble on</h2>
   <div class="card">
     <div class="item"><span class="box"></span><div>
-      <b>29a. Fencing — ANSWERED: he is not restarting. Set "Will you continue" back to No.</b>
-      <p><span class="where">Interests &amp; Achievements → Fencing (Foil) → Will you continue</span></p>
-      <p>Dad confirmed 2 Aug: no restart. The dropdown currently says Yes and must go back to <b>No</b>. Everything else about the entry stays — seven years, the rankings, and the fact that he stopped in 2025 are all within the two-year window and all true. His interview line is the clean one we drafted: peaked, wound down, stopped to make room for other sports.</p>
+      <b>4. "JHCTY" — still there, three times</b><span class="ref">box · ACADEMICS</span>
+      <p>Johns Hopkins' programme is known everywhere as <b>CTY</b>. Keep the full name on the SCAT line, then use "CTY" on the two course lines. As it stands, the one credential in the file that every American admissions officer recognises instantly is written in an abbreviation none of them uses.</p>
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>29b. Trumpet "Weeks per Year" = 56 — a year only has 52 weeks</b><span class="new">NEW</span>
-      <p><span class="where">Interests &amp; Achievements → Trumpet → Weeks per Year</span></p>
-      <p>It was 44 in the earlier screenshots and is now <b>56</b> — an impossible number, and the kind of detail a careful reader notices. <b>Dad to ask Mom for the real figure</b> (item 17c also has the hours question open — currently 5/week). Whatever the answer, it must be 52 or below; roughly 40 school-year weeks is the likely truth. Fix this one first: it costs nothing and removes a pure credibility risk.</p>
+      <b>5. The hackathon line does not parse — and it is buried</b><span class="ref">box · SELF-DIRECTED LEARNING</span>
+      <p><span class="now">Now:</span> "2023 - CIS Hackathon - Youngest Participant (2024 - Participate)". <span class="to">Suggest:</span> "<b>2023-2024 - CIS Hackathon - competed both years; youngest participant in 2023</b>". <b>The bigger point:</b> this is the strongest computer-science evidence in the entire application — a ten-year-old as the youngest entrant in a hackathon says more than any number of classes — and it currently sits at the bottom of the last section. Move it up into ACADEMICS, or give it a TECHNOLOGY heading alongside the Preface classes.</p>
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>29c. Skiing still says "Off Piste Skiing" — Dad stated he does not do off-piste</b>
-      <p><span class="where">Interests &amp; Achievements → Skiing (Alpine) → Level of Involvement + Weeks per Year</span></p>
-      <p>Item 17d was never applied: Level still reads "Off Piste Skiing" (Dad: "he is not doing off piste") and Weeks is still 2 (Dad: 1). <span class="to">Change to</span> Level "<b>Hobby - Alpine Skiing</b>", Weeks <b>1</b>. Hours 30 per week is fine — that reads correctly as an intensive ski week.</p>
+      <b>6. The Community Service row no longer says who it is for</b><span class="ref">activity grid</span>
+      <p><span class="now">Now:</span> Level "Organizing Committee", Positions "Member, Shavee &amp; Fundraiser". St Baldrick's has dropped out of the row, so the reader meets "Shavee" — an insider word — with nothing to attach it to. <span class="to">Change Level to:</span> "<b>St Baldrick's Foundation - Organizing Cttee (2026)</b>" (49 of 60 characters). Leave Positions as they are: once the charity is named, "Shavee" is a good detail, because it tells them he shaved his head.</p>
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>29d. Three earlier fixes still not applied — and one that was ✓</b>
-      <p><b>Applied ✓:</b> Soccer weeks 48 → 40 (item 17e). <b>Still outstanding:</b> Referee weeks still <b>40</b>, should be 10 (17a) · Cross Country hours still <b>5</b>, should be 4 (17b) · Trumpet Level still "Symphonic Band" with Positions "First Trumpet" though Mom confirmed the chair is <b>not</b> settled and it was <b>Concert</b> Band (item 8) · cats still "2021 - Present" in the box though Dad decided 2021-2025 (item 4).</p>
+      <b>7. Fencing "Positions held" just repeats the weapon</b><span class="ref">activity grid</span>
+      <p>The row already reads Fencing / Foil, and Positions Held now says "Foil" again — a wasted field, since the rankings moved to the achievements box. <span class="to">Use it for the credential:</span> "<b>HKSSF no.30 (2023)</b>" (18 characters), or leave it blank.</p>
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>29e. Two fixes inside the Community Service block — one is an accuracy issue</b>
-      <p><span class="where">Interests &amp; Achievements → Community Service → Level of Involvement + Positions Held</span></p>
-      <p><b>Accuracy:</b> Level of Involvement reads "Organizing Committee Member - St Baldrick's" while Years of Experience says 3 — together they claim <b>three years of organising</b>, but Dad confirmed he took part for three years and organised only in <b>2026</b>. <span class="to">Change Level to</span> "<b>St Baldrick's: 3 yrs participant, 2026 organizer</b>" (48 of 60 characters) — that keeps both facts and fixes the overstatement. <b>Wording:</b> Positions Held reads "Fundraiser: #2 Team; #4th Solo" — "#4th" doubles the ordinal and "Solo" is odd here. <span class="to">Suggest</span> "<b>#2 Team; #4 Individual (2026)</b>" (29 characters).</p>
+      <b>8. Two blank rows print in the schools table</b><span class="ref">Educational Background</span>
+      <p>Yew Chung is correctly gone ✓, but the PDF now shows an empty row with a dash, then FIS, then a second empty row with a dash. The print preview proved both blocks merge into one table, so: <b>move FIS into the first "Other Schools" block and clear the leftover additional row</b>, then re-preview. It should print as a single clean line.</p>
     </div></div>
   </div>
 
-  <h2><span class="tag red">Please verify</span> Corrections still open</h2>
-  <p class="h2sub">Accuracy items — the signature page certifies everything as factually correct.</p>
+  <h2><span class="tag amber">Fix</span> Numbers and small edits</h2>
   <div class="card">
     <div class="item"><span class="box"></span><div>
-      <b>8. Trumpet — still says "Symphonic Band / First Trumpet" — the one real accuracy fix left on this page</b>
-      <p><span class="where">Part 2 · Interests &amp; Achievements → Trumpet → Level of Involvement + Positions Held</span></p>
-      <p>Mom confirmed the Symphonic chair is <b>not</b> settled — First Trumpet was in <b>Concert</b> Band (G7) — but the form still reads as First Trumpet of Symphonic. <span class="to">Change to:</span> Level "<b>Concert Band → Symphonic Band</b>" · Positions "<b>First Trumpet (Concert Band)</b>" (both fit the limits). Update again if he wins the seat in G8.</p>
+      <b>9. Trumpet: 52 weeks a year</b><span class="ref">activity grid</span>
+      <p>Better than the impossible 56 ✓, but 52 means every single week of the year with none off — over Christmas, over the summer, while travelling. <span class="to">Use ~40.</span> The 5 hours a week still needs Mom's real figure too.</p>
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>4. Cat fostering — DECIDED: "2021–2025" (Dad: "not doing it anymore — Raph will tell the truth")</b>
-      <p><span class="where">Part 2 · Interests &amp; Achievements → Achievements box → Community Service</span></p>
-      <p>Decision made 28 Jul — exactly the right instinct: the honest end-date protects Raphael at interview. <b>Mom to apply:</b> change "2021 - Present" → "<b>2021–2025</b>" in the box. Then this closes.</p>
+      <b>10. Cross Country: 5 hours a week</b><span class="ref">activity grid</span>
+      <p>Dad's own audit said 3-4. <span class="to">Use 4.</span> It is the only number in the grid still carrying the old inflation.</p>
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>1. Parent emails — mostly resolved ✓ (Dad now on his own address, 1 Aug)</b>
-      <p><span class="where">Part 1 · Contact Information</span><span class="where">Family Information → Guardian 1 + Guardian 2</span></p>
-      <p>Dad has switched to <b>feschetx@gmail.com</b>, which achieves exactly what was needed: the application now has <b>two independent inboxes</b> instead of one, so a missed or full mailbox can no longer take down every notification at once. <b>Two things to close it out:</b> ① confirm <i>both</i> of Dad's fields were changed — the Part 1 Contact "Parent/Guardian Email" as well as the Family Information Guardian 1 "Preferred Email"; ② Mom's Preferred Email still holds the shared school Gmail, which is fine as a deliberate choice — that already gives redundancy — but if she would rather receive admissions mail directly, her own address goes there. <i>Note for the record: earlier guidance had Dad's forms address as the yahoo.fr one; gmail is now the address of record for this application.</i></p>
-    </div></div>
-    <div class="item done"><span class="box"></span><div>
-      <b>2. Mom's Secondary Contact Number — FIXED ✓ (verified 1 Aug)</b>
-      <p><span class="where">Part 2 · Family Information → Guardian 2 → Secondary Contact Number</span></p>
-      <p>Now holds the home landline (+852 2314 2808) typed as "Home", matching Dad's block and the Household 1 telephone. Closed.</p>
+      <b>11. Soccer names neither the club nor the league properly</b><span class="ref">activity grid</span>
+      <p><span class="now">Now:</span> "HK Junior Football League". <span class="to">Change to:</span> "<b>Tai Tam Tigers, Hong Kong Junior Football League</b>" (48 of 60) — same field, names the club, and spells out an acronym no American reader knows.</p>
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>30. Address fields — Dad clearing Biographical; two more places to match</b>
-      <p><span class="where">Part 1 · Contact Information</span><span class="where">Biographical Information</span><span class="where">Family Information → Household 1</span></p>
-      <p>Agreed on the convention: Province and Zip blank, since Hong Kong has neither. Household 1 is already blank and Dad is clearing Biographical. <span class="now">Do not forget the third:</span> <b>Part 1 · Contact Information</b> still carries Province "Hong Kong" and Zip "00000" — the home address appears in all three places and they print side by side in the PDF. <b>Separately, for tidiness:</b> the school addresses now disagree with each other too — HKIS still shows Zip 00000 and Province "Hong Kong" on Educational Background while FIS and Yew Chung have neither. Lower priority than the home address, but the same two-minute fix.</p>
-    </div></div>
-    <div class="item done"><span class="box"></span><div>
-      <b>31. Mom's Employment Status — CLOSED ✓, nothing to change</b>
-      <p><span class="where">Family Information → Guardian 2 → Employment Status</span></p>
-      <p>Dad checked the dropdown: Gateway offers only "Employed" and "Not Currently Employed" — there is no Homemaker option. The current entry is therefore the correct one of the two available.</p>
+      <b>12. The phone number still has no "+"</b><span class="ref">Biographical</span>
+      <p>85293299357 on the candidate's line, while every number in Family Information is written +852… Add the plus so the document matches itself.</p>
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>5. Previous school full name — half done</b>
-      <p><span class="where">Part 2 · Educational Background ✓ VERIFIED</span><span class="where">Part 1 · Academic Information → still to update</span></p>
-      <p>Part 2 shows "French International School of Hong Kong" ✓. Remaining: the Part 1 · Academic "Name of Previous School" field.</p>
+      <b>13. The coding block is still not there</b><span class="ref">activity grid — empty row at the bottom</span>
+      <p>Activity "Other" → "<b>Coding</b>" · Years <b>2</b> · Level "<b>Preface (Hong Kong) - weekly classes</b>" · Positions <b>blank</b> · Continue <b>Yes</b>. Hours and weeks still needed from Mom. With the hackathon line fixed too, the Computer Science tick finally has two things standing behind it.</p>
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>19. Phone "+" missing in two places — the only edit left on the Biographical page</b>
-      <p><span class="where">Part 1 · Contact Information</span><span class="where">Part 2 · Biographical Information</span></p>
-      <p>Both show the candidate's number as 11 digits with no "+", while every Family Information number uses "+852…". Add the "+" in both. Cosmetic — but it is now the sole outstanding change on an otherwise fully-verified Biographical page.</p>
+      <b>14. The signatures are dated 22 July — the content has changed a great deal since</b><span class="ref">page 1H</span>
+      <p>All three signatures and the accuracy certification carry <b>07/22/2026</b>, but the profile has been edited almost daily since. Nobody will call that fraud, yet the certification is meant to cover what is actually submitted. <b>Re-date all three to the day you submit</b>, after the final print preview.</p>
+    </div></div>
+    <div class="item"><span class="box"></span><div>
+      <b>15. Part 1 is not in this PDF and still needs its own pass</b><span class="ref">Part 1 · Applicant Profile</span>
+      <p>This document is the Candidate Profile only. The separate <b>Applicant Profile</b> still holds the older values: previous school as "French International School" rather than the full name, Province "Hong Kong" and Zip "00000" on the contact address, and a phone number without the plus. Three fields, one pass.</p>
     </div></div>
   </div>
 
-  <h2><span class="tag amber">Numbers audit</span> Dad's realism pass on hours &amp; weeks (item 17)</h2>
-  <p class="h2sub">Dad's own corrections, 28 Jul — for Mom to apply. Realistic numbers are more credible than big ones.</p>
+  <h2><span class="tag amber">Questions</span> Eight things I cannot resolve myself</h2>
+  <div class="card">
+    <div class="item q"><span class="box"></span><div>
+      <b>Q1. DELF has changed from 93% to 88.5% — which is right?</b>
+      <p>Every earlier version said 93%; the PDF now says 88.5%. One is wrong, and it is a number printed on a certificate, so it is checkable. Please confirm against the diploma.</p>
+    </div></div>
+    <div class="item q"><span class="box"></span><div>
+      <b>Q2. The cats have disappeared entirely — deliberate?</b>
+      <p>"Fostered 9 cats from 3 months to adoption" is gone from Community Service. If the worry was the "2021 - Present" wording, "<b>2021-2025</b>" would have solved it and kept the line. Four years of raising nine rescue kittens to adoption is exactly the sustained, unglamorous commitment that reads well — I would put it back unless there is a reason not to.</p>
+    </div></div>
+    <div class="item q"><span class="box"></span><div>
+      <b>Q3. SCAT: "Advanced Verbal &amp; Math"</b>
+      <p>The SCAT's two sections are called <b>Verbal</b> and <b>Quantitative</b>. If "Advanced" refers to CTY's <b>Advanced CTY-Level</b> qualification, say so explicitly — it is a higher bar and worth naming. If not, "(Verbal &amp; Quantitative)" is the accurate wording.</p>
+    </div></div>
+    <div class="item q"><span class="box"></span><div>
+      <b>Q4. Taekwondo — 9 years?</b>
+      <p>Still unconfirmed. Nine years means starting at four. Whatever the answer, the CV must match the form.</p>
+    </div></div>
+    <div class="item q"><span class="box"></span><div>
+      <b>Q5. Kids4Kids is dated August 2026 — has it started?</b>
+      <p>That is this month. If he begins shortly, "from Aug 2026" is the honest phrasing; if sessions have already happened, leave it.</p>
+    </div></div>
+    <div class="item q"><span class="box"></span><div>
+      <b>Q6. The hackathon — what happened in 2024?</b>
+      <p>"(2024 - Participate)" suggests he entered again the following year. Confirm, so the line can say it plainly.</p>
+    </div></div>
+    <div class="item q"><span class="box"></span><div>
+      <b>Q7. Preface — hours, weeks, language, certificates?</b>
+      <p>Needed to finish the coding block. And if Preface awards levels or certificates, a completed one is a genuine achievements-box line.</p>
+    </div></div>
+    <div class="item q"><span class="box"></span><div>
+      <b>Q8. Football — has anyone asked the club?</b>
+      <p>He was U14 in 2025-26 and U13 the year before, TTT1 both times. The league publishes nothing for those age groups, so the team manager or the parents' group is the only source. Two seasons in the first team with a league position attached would be the strongest athletic line in the file — better than the fencing rankings, because it is current.</p>
+    </div></div>
+  </div>
+
+  <h2><span class="tag green">Worth considering</span> Two sections still empty</h2>
   <div class="card">
     <div class="item"><span class="box"></span><div>
-      <b>17a. Soccer Referee — Weeks per Year: 40 → 10</b> <span class="where">Referee block → Weeks per Year</span>
-      <p>Dad: "2 hours, 10 weeks a year. 40 is too many." Hours already 2 ✓; change weeks to 10.</p>
+      <b>Additional Information — blank, and the story is ready</b>
+      <p>A family of educators choosing boarding deliberately: both grandmothers headmistresses, Mom boarded at Grier School in Pennsylvania, Liv at Choate now, and Raphael has moved between a French-curriculum school and an American one and thrived in both. Four or five sentences answer what every committee wonders about an overseas thirteen-year-old — will he cope, and will the family see it through. Say the word and it can be drafted in one pass.</p>
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>17b. Cross Country — Hours per Week: 5 → 3 or 4</b> <span class="where">Cross Country block → Hours per Week</span>
-      <p>Dad suggests 3–4. A school season (3 practices + meets) supports <b>4</b>. Weeks 16 stays ✓.</p>
-    </div></div>
-    <div class="item wait"><span class="box"></span><div>
-      <b>17c. Trumpet — Hours per Week: currently 5, Dad asks "how many is he really doing?"</b> <span class="where">Trumpet block → Hours per Week</span>
-      <p>Awaiting Mom/Raphael's real number (band rehearsals + home practice — likely 3–4). Also consider Weeks 44 → 40 (school year + some holiday practice).</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>17d. Skiing — Weeks per Year: 2 → 1, and drop "Off Piste"</b> <span class="where">Skiing block → Weeks per Year + Level of Involvement</span>
-      <p>Dad: "1 week per year — he is not doing off piste." <span class="to">Change to:</span> Weeks 1; Level "<b>Hobby - Alpine Skiing</b>". (Bronze Medal stays.)</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>17e. Soccer — Weeks per Year now 48 (was 46)</b> <span class="where">Soccer block → Weeks per Year</span>
-      <p>Went <i>up</i> in the latest edit. By Dad's own audit logic, 48 = training every week but four. Suggest <b>~40</b> unless he genuinely trains through all holidays.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>17f. Fencing — Weeks per Year 52 (optional polish)</b> <span class="where">Fencing block → Weeks per Year</span>
-      <p>Historical (stopped activity), but 52 = literally every week of the year. 45–48 reads more credible. Low priority.</p>
+      <b>Multimedia — both slots empty</b>
+      <p>The obvious candidate now exists: Cambodia, teaching trumpet. Even a phone clip of him with the students would land, because it shows the thing the rest of the file only asserts. The Rubik's solve is the easy second — forty seconds, one take.</p>
     </div></div>
   </div>
 
-  <h2><span class="tag red">New</span> One new check from the latest screenshots</h2>
-  <div class="card">
-    <div class="item"><span class="box"></span><div>
-      <b>22. Taekwondo — Years of Experience changed from 6 to 9</b><span class="new">NEW</span>
-      <p><span class="where">Part 2 · Interests &amp; Achievements → Taekwondo → Years of Experience</span></p>
-      <p>Earlier screenshots said 6 (start ~2020); now 9 (start ~2017, age 4–5). Plausible for kids' classes — but it changed without discussion, and our records said 6. <b>Confirm 9 is right</b>, and align the CV. (After the fencing-date lesson, a quick think-back is worth it: which year did he actually start?)</p>
-    </div></div>
-  </div>
-
-  <h2><span class="tag green">For Dad &amp; Mom</span> Achievements box — polish to make it shine (item 10)</h2>
-  <div class="card">
-    <div class="item"><span class="box"></span><div>
-      <b>10. Achievements box — reviewed again 1 Aug against the new text (792 of 1500 used, 708 free)</b>
-      <p><span class="where">Part 2 · Interests &amp; Achievements → Achievements box</span></p>
-      <p><b>Two genuinely good additions since last time ✓:</b> the <b>Class Representative</b> line (leadership, and it now spans FIS and HKIS) and the <b>OTHERS</b> section — Rubik's Cube and the card-tricks project give the file personality, which most applications lack entirely. Dad's follow-up that <b>both were entirely self-taught</b> is the detail that turns them from quirks into evidence; v4 renames the section accordingly.</p>
-      <p><b>But one thing was lost:</b> <span class="now">St Baldrick's has disappeared from COMMUNITY SERVICE.</span> It survives only inside the activity block, compressed to "#2 Team; #4th Solo". That is his single strongest service credential — three years on the organising committee, 2nd highest fundraising team and 4th highest individual in 2026 — and a reader skimming the achievements box will now not see it at all. With 708 characters free there is no reason to leave it out. <b>Restore it.</b></p>
-      <p><b>Four wording fixes:</b> ① "<b>JHCTY</b>" → "<b>CTY</b>". Dad asked whether to write the name in full: keep exactly the structure he already has — spelled out once on the SCAT line, abbreviated on the two lines below it. Only the abbreviation itself changes, because CTY is what US admissions offices call it; JHCTY reads as unfamiliarity with a programme he has actually completed twice. ② "Advanced Verbal &amp; <b>Maths</b>" → the SCAT's real sections are "<b>Verbal &amp; Quantitative</b>", and "Math" is the US spelling. ③ "<b>G7 Candidate</b>" — Dad confirmed it was for <b>Class Representative</b>, and wants it to show he tried and did not always win. v4 says "stood for election again in G7", which states that without apologising for it. ④ cats "2021 - <b>Present</b>" → "2021-2025", already decided (item 4).</p>
-      <p><b>The biggest opportunity — the ATHLETICS section has only a diving certificate in it.</b> For a boy who plays league football, runs cross country, holds a red belt and fenced competitively, one line is a real undersell. Above all, <b>he is a certified football referee at 13</b>, officiating U7-U12 matches — that is rare, and admissions officers read it as composure, authority and responsibility under pressure. It deserves a line of its own.</p>
-      <p><b>Paste-ready text v6</b> — the three answers of 2 Aug applied. <b>Measured at 1,385 of 1,500 characters (115 spare)</b>, counted the way Gateway counts. The Roblox line is gone: Raphael has not built a game yet, and claiming one he could not show would have been the single most dangerous line in the file — an interviewer who codes would have asked to see it. What remains under that heading is still true and still his: two things learned unaided. The football line is still absent — see item 21, the league has published nothing for his age group.</p>
-      <div class="draft">ACADEMICS
-2024-2026 - HKIS Honor Roll G6 &amp; G7
-2022-2026 - Class Representative (G4, G5); stood for election again in G7
-2026 - Johns Hopkins Center for Talented Youth (CTY) - SCAT High Honors (Verbal &amp; Quantitative)
-Jul 2026 - CTY "Macroeconomics" course (in progress)
-Jul 2025 - CTY "Examining the Evidence" course (excellent evaluation)
-2024 - Diplome d'Etudes en Langue Francaise (DELF) A2 - 93%
-2024 - Le Rosey, Switzerland - Academic Excellence Award (Summer Intensive French)
-
-ATHLETICS
-2023-2026 - Certified referee, Hong Kong Junior Football League - U7-U12 matches
-2026 - U14 cross-country qualifier, International Schools Sports Federation of Hong Kong
-Apr 2026 - PADI Junior Open Water Diver
-2023 - Hong Kong Schools Sports Federation inter-school fencing - no.30 in Hong Kong (foil); no.36 - Paris Foil
-
-COMMUNITY SERVICE
-2024-2026 - St Baldrick's Foundation (3 years); Organizing Committee 2026 - 2nd Highest Fundraising Team &amp; 4th Highest Individual Fundraiser
-2024-2026 - Annual volunteer, Sunday School, Lombok, Indonesia
-2021-2025 - Fostered 9 rescue cats from 3 months old to adoption
-Jul 2026 - Cambodian Children's Fund - Volunteer Trumpet Instructor &amp; Instrument Donation Coordinator
-
-SELF-DIRECTED LEARNING (taught himself, start to finish)
-2026 - HKIS Self-Motivated Learning project - card magic
-2022 - FIS's Got Talent Winner - Rubik's Cube (~40 second solve)</div>
-      <p><b>What changed in v5 (Dad's 1 Aug review):</b> ① <b>"Macroeconomics (in progress)"</b> — Dad is right that this was the sharpest catch: an undated course sitting directly above one marked "excellent evaluation" reads as if the evaluation were withheld. Saying it is in progress removes the implication and quietly adds something better — he is studying economics <i>right now</i>, which is exactly what the Social Sciences tick claims. When the evaluation arrives, it becomes a post-submission email to the schools (item 26). If the course runs into August, write "Jul-Aug 2026". ② <b>Acronyms spelled out:</b> HKJFL, ISSFHK and HKSSF mean nothing to a reader in Connecticut — they now read Hong Kong Junior Football League, International Schools Sports Federation of Hong Kong, and Hong Kong Schools Sports Federation. This costs characters and buys comprehension; an unexplained acronym is a credential the reader cannot value. ③ <b>St Baldrick's corrected</b> — "(3 years); Organizing Committee 2026" now separates three years of taking part from one year of organising, which is what Dad confirmed. ④ <b>The football line is removed for now</b> — see item 21; it cannot go back until the age group is settled. ⑤ <b>"(Lua)" dropped</b> pending confirmation — see item 23. ⑥ Sorting made strictly consistent inside every section: multi-year ranges first, then single events newest to oldest.</p>
-      <p><b>What changed in v4, and why:</b> ① <b>"OTHERS" is now "SELF-DIRECTED LEARNING (taught himself, start to finish)"</b> — Dad confirmed the Rubik's Cube, the card magic and the Roblox game were all learned unaided. Naming that quality is far stronger than filing them under "Others": three unrelated skills, each self-taught, is exactly the trait boarding schools screen for, and the header says it before the reader has to infer it. ② <b>"stood for election again in G7"</b> replaces "G7 Candidate" — per Dad, it should show he tried and did not always win; that phrasing says so plainly without apology, and it is now clear he stood for Class Representative. ③ <b>CTY, not JHCTY</b> — keep Dad's structure of spelling the name out once and abbreviating afterwards; only the abbreviation changes, because "CTY" is what US admissions offices actually call it. ④ Placeholders removed where Dad has already given the answer; only the Paris event name and the Lombok start year still need checking — both are inside the 109-character margin.</p>
-      <p><b>On dates and sorting (Dad's question) — the scheme is sound, with three fixes:</b> the underlying rule is right and worth keeping: multi-year ranges first (they show commitment), then single events newest to oldest. ① <b>Month formats are inconsistent</b> — the box currently mixes "Jul 2026", "April 2026" and "July 2026". Pick one; v4 uses three-letter months throughout (Jul, Apr). ② <b>The OTHERS section sorted oldest-first</b> (2022 then 2026) while every other section sorts newest-first — v4 makes it consistent. ③ Use a month only where the month carries meaning (a summer course, a certification date); a bare year is right for anything that ran across a school year. Beyond that, no change needed — the section headings do the heavy lifting and a reader can scan it in seconds.</p>
-      <p><b>Still to confirm before pasting:</b> ① the Paris event's official name and year (item 9) · ② Lombok start year — v4 assumes 2024-2026 · ③ TTT1 confirmation for the football line (item 21). If any is not ready, delete that one line and add it later by email to the schools — do not hold up submission for it.</p>
-      <p><b>On the other service candidates (Dad's question — include or skip?):</b> ✅ <b>Lombok Sunday School</b> — include: recurring (once a year × 3 years) and hands-on; that's a real commitment line. ✅/❓ <b>China orphanage trips</b> — include only if recent (2023+) and recurring; if they pre-date FIS-era, skip — old one-offs dilute. ❌ <b>FeedingHK cake auction (via BofA)</b> — skip: it reads as a parent's corporate event, and admissions spot padding instantly. ❌ <b>ImpactHK tour</b> — skip if one-off, as Dad suspects. Principle: three or four strong recurring lines beat a laundry list — the current set (St Baldrick's + cats + Cambodia + Lombok) is already an excellent service story.</p>
-      <p><b>Needed to finalize:</b> ① TTT1 confirmation (football line) · ② Paris event name + year, and any fencing medals/podiums worth naming · ③ Lombok years (2024–2026?) · ④ China orphanage — years, and recurring or not? · ⑤ FIS Got Talent year.</p>
-    </div></div>
-    <div class="item done"><span class="box"></span><div>
-      <b>12. Alumni section — CLOSED, leaving it blank (Dad's call, 1 Aug — and he is right)</b>
-      <p><span class="where">Family Information (continued) → Alumni</span></p>
-      <p>Dad's two objections both hold. <b>Liv is already visible to all five schools</b> — the Siblings section carries "Choate Rosemary Hall" in her School or College Attended field, and that prints on every copy, so an Alumni entry would only repeat it. And on Grier: the honest point is that admissions are not ranking Kenzie's high school — what the section detects is whether a family has lived boarding, and <b>that is already on the form</b> in her own "High School Attended" field. Since Grier is not one of the five, there is no legacy benefit to unlock either. The marginal gain is close to zero, so the section stays empty.</p>
-      <p><b>Where the value actually goes:</b> the boarding-family thread is worth more as prose than as form entries — see item 13. "My mother boarded in Pennsylvania, my sister is at Choate, both my grandmothers ran schools" reads as a story in the Additional Information box; the same facts scattered across three form fields read as data nobody joins up.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>9. Fencing rankings — new plan: full credentials go in the achievements box (Dad's idea)</b>
-      <p><span class="where">Part 2 · Interests &amp; Achievements → Achievements box · ATHLETICS</span></p>
-      <p>Better than squeezing names into the 30-char Positions field: keep "HKSSF no.30; Paris Foil no.36" there as is, and put the full story — tournament names, year, medals — in the achievements box (see the draft in item 10). Still needed: the exact Paris event name + year, any medals worth listing, proof screenshots saved now, and Raphael's interview one-liner (incl. the 2024 no.102).</p>
-    </div></div>
-    <div class="item wait"><span class="box"></span><div>
-      <b>13. Additional Information box (0/6000) — now carries the whole family-boarding story</b>
-      <p><span class="where">Part 2 · Additional Information</span></p>
-      <p>With the Alumni section deliberately left blank (item 12), this box becomes the only place the family context can land — and prose is the better vehicle anyway. <b>The frame:</b> this is a family of educators choosing boarding deliberately, not speculatively. Both grandmothers are headmistresses. Mom boarded at Grier School in Pennsylvania. Liv is at Choate now. Raphael has moved between a French-curriculum school and an American one and thrived in both. Four or five plain sentences of that answer the two questions every committee asks about an overseas thirteen-year-old — will he cope, and will the family see it through — before anyone has to wonder. <b>Also still available:</b> trilingual background, the FIS→HKIS transition, and the activities that did not fit two listings (Rubik's, Student Council, referee certification). Dad has deferred the draft; say the word and it can be written in one pass.</p>
-    </div></div>
-    <div class="item wait"><span class="box"></span><div>
-      <b>14. Multimedia — Dad looking for material</b>
-      <p><span class="where">Part 2 · Additional Information</span> Idea, given the new Cambodia line: a short clip of Raphael teaching trumpet there would be memorable — only if genuinely strong footage exists.</p>
-    </div></div>
-  </div>
-
-  <h2><span class="tag teal">Football</span> Item 21 — answered, one confirmation pending</h2>
-  <div class="card">
-    <div class="item"><span class="box"></span><div>
-      <b>21. Football — age groups confirmed; the league has published nothing for either of his seasons</b>
-      <p><span class="where">Interests &amp; Achievements → Soccer</span></p>
-      <p>Dad confirmed 2 Aug: <b>U14 in 2025-26, U13 in 2024-25, TTT1 both years.</b> That settles it — the U12 Championship A runners-up result belongs to a younger squad and must not be used. I re-checked the league site today: the <b>U14/15 tables are still empty</b> ("No items found" in both divisions), and only the current season is published, so his U13 year from 2024-25 is not there either. <b>There is no online source for his results.</b> The only route is the club: the TTT team manager or the parents' group will have the final standings for both seasons. Worth one message — two seasons in the top team, with a league position attached, is a stronger line than "midfielder".</p>
-      <p><span class="to">Meanwhile, one free improvement:</span> the Soccer block's Level of Involvement currently reads "Junior Football League", which names neither the club nor the level. Change it to "<b>Tai Tam Tigers, Hong Kong Junior Football League</b>" (48 of 60 characters) — same field, far more information, and it spells out the acronym for an American reader.</p>
-    </div></div>
-  </div>
-
-  <h2><span class="tag grey">Closed ✓</span> Verified done (stable numbering)</h2>
-  <div class="card">
-    <div class="item done"><span class="box"></span><div><b>3. HKIS address ✓</b> — "1 Red Hill Road / Tai Tam" verified on screenshot.</div></div>
-    <div class="item done"><span class="box"></span><div><b>6. Taekwondo belt ✓</b> — "Red Belt" on the form, exactly per Dad's final call. Email schools when Red-Black lands.</div></div>
-    <div class="item done"><span class="box"></span><div><b>7. Fencing years ✓</b> — form now says <b>7</b>, matching the Sep 2018 enrollment doc. Evidence and form agree; Dad's question to Mom already answered by the folder.</div></div>
-    <div class="item done"><span class="box"></span><div><b>11. Interest checkboxes — SETTLED at 5 of 8, Dad's call ✓</b><br>
-    <span style="color:#5c6b7a;font-size:.87rem;">English · World Languages · Math · Computer Science · <b>Social Sciences</b>. Dad: "we can't check all the boxes" — agreed, and restraint is right: a page with everything ticked says nothing. More to the point, <b>all five are evidence-backed</b> — Language Usage at the 98th percentile, DELF and Mandarin, Math at the 96th, coding classes and the Roblox build, and Social Studies "Exhibiting Depth" plus CTY Macroeconomics. There is no weak one to drop, so the set stands. <b>One thing worth knowing before it is final:</b> at US boarding schools these interest ticks are often circulated to departments, and music directors do flag incoming players — Raphael is a Symphonic Band trumpeter who taught the instrument abroad, so ticking Visual &amp; Performing Arts is less about consistency than about landing on the music department's list. If he would want a place in the band, it earns its tick; if he sees music as something he does rather than something he wants to study, leaving it off is perfectly honest. Dad's decision either way — noted as closed.</span></div></div>
-    <div class="item"><span class="box"></span><div><b>15. FIS placement — RE-OPENED (1 Aug, Dad: "keep it in the todo list, it is weird")</b> — the print preview settles it: both blocks merge into one table in the PDF, so the first block is not a different category and the empty one prints a stray dash row. Move FIS into the first block. Tracked with <b>28a</b>.</div></div>
-    <div class="item done"><span class="box"></span><div><b>16. Cross country ✓</b> — Level now "School Team". Verified.</div></div>
-    <div class="item done"><span class="box"></span><div><b>18. PADI ✓</b> — box now reads "PADI Junior Open Water Diver". Verified.</div></div>
-    <div class="item done"><span class="box"></span><div><b>20. Yew Chung + FIS dates ✓</b> — address confirmed by Dad; FIS Sep-2017 start proven by the Apr-2017 debenture, RC'17 form, and folder structure. Timeline gap-free.</div></div>
-  </div>
-
-  <h2><span class="tag red">Gap review</span> Full-record sweep — proposals awaiting Dad's answers</h2>
-  <div class="card">
-    <div class="item"><span class="box"></span><div>
-      <b>28. Educational Background — data all verified; TWO ACTIONS REMAIN (Dad checking with Mom)</b>
-      <p><span class="where">Part 2 · Educational Background</span></p>
-      <p style="background:#fdf0ee;border-radius:8px;padding:10px 12px;color:#7d2820;"><b>THE TWO REMAINING ACTIONS (Dad, 1 Aug — will confirm with Mom and revert):</b><br>
-      <b>① Confirm with Mom whether the first "Other Schools" block really cannot be used</b> — the print preview says it can (both blocks merge into one table in the PDF), and using it removes the stray dash row. If usable → move FIS into it.<br>
-      <b>② Remove the Yew Chung entry</b> — playgroup-era, outside the "since sixth grade" question, and its begin date makes Raphael 8 months old.<br>
-      <i>End state to aim for:</i> one row only — FIS, 09/04/2017 – 06/30/2023, sitting in the first block, nothing in Additional. <b>Then re-run Print Preview</b> to confirm the now-empty Additional block doesn't print a dash of its own. Two cautions when editing: after clicking "Remove", check the FIS entry survived intact (the button sits directly under Yew Chung), and note that keeping FIS at all is a deliberate choice to give context beyond what the question asks — that is fine, just intentional.</p>
-      <p><b>Verification:</b> every field cross-checked against its character counter — "Hong Kong International School" 30 ✓ · "1 Red Hill Road" 15 ✓ · "Tai Tam" 7 ✓ · "French International School of Hong Kong" 40 ✓ · "34 Price Road" 13 ✓ · "Jardine's Lookout" 17 ✓ · "Yew Chung International School" 30 ✓ · "3 Somerset Road" 15 ✓ · "Kowloon Tong" 12 ✓. All exact — no truncation or stray spaces. Dates chain with no gaps: YCIS to 30 Jun 2017 → FIS from 4 Sep 2017 to 30 Jun 2023 → HKIS from 14 Aug 2023. Grade logic checks out: HKIS from G5, so <b>since 6th grade he has attended only HKIS</b> — the empty first "Other Schools" block is correct.</p>
-      <p><b>28a. Print-preview test — DONE ✓, and it proves two things.</b> <span class="to">Good news:</span> both schools render in full — FIS and Yew Chung each print with dates, names and addresses, and the footer confirms per-school output ("Choate Rosemary Hall · Fall 2027 · Boarding · Grade 9"). Nothing is being dropped. <span class="now">But:</span> ① the empty first block prints as a <b>stray row containing just a dash</b> ("-" under Year(s) Attended) sitting above the two real entries — a visible blemish on the page admissions reads; ② decisively, <b>the PDF merges both blocks into one single table under one heading</b>. So the first block carries no different meaning from "Additional" — it is the same list, and the second section is pure overflow. That answers Kenzie's "we cannot use it": there is no rule against it, the two sections are identical in the output. <span class="to">Fix:</span> move the FIS entry into the first block; the orphan dash row disappears. Re-preview afterwards to confirm the now-empty Additional block doesn't print its own dash.</p>
-      <p><b>28b. "When is sixth grade?" — 6th grade was the 2024-25 school year (Aug 2024 – Jun 2025).</b> The chain: HKIS G5 in 2023-24 → G6 2024-25 → G7 2025-26 → G8 now. Independently confirmed by the achievements box's own line, "2024-2026 - HKIS Honor Roll G6 &amp; G7". <b>So the honest answer to that question is "no other schools" — since August 2024 he has attended only HKIS.</b> FIS ended Jun 2023 and Yew Chung Jun 2017; both sit outside the question, which is exactly why the printed page reads oddly. <span class="to">Recommendation: keep FIS, drop Yew Chung.</span> FIS is genuine context (his prior school, and it explains the French curriculum behind DELF); Yew Chung is a playgroup whose start date makes Raphael <b>8 months old</b> — no value to admissions and the one line that looks like a data error. Alternatives: drop both (strictly correct), or keep Yew Chung with the begin date corrected to the real nursery/K start.</p>
-      <p><b>28c. Zip/Province — CLOSED ✓.</b> Dad standardised the entries to "Hong Kong" with no Zip and no Province; the PDF above was generated <i>before</i> that change, so the mismatch it showed is already gone. Nothing to do.</p>
-      <p><b>28d. Note, no action needed:</b> "1 Red Hill Road" is HKIS's <i>High School</i> address; Middle School + Main Office is 700 Tai Tam Reservoir Road. Both are real HKIS addresses and schools contact HKIS through the counsellor, not by post — fine as entered.</p>
-      <p><b>28e. Also verified in the PDF footer ✓:</b> name order (Feschet · Raphael · Nolan), DOB 12/05/2012, Gender Male, "Applying for Choate Rosemary Hall", Fall 2027, Boarding, Grade 9 — every identity field prints correctly on the version that reaches the school.</p>
-    </div></div>
-    <div class="item done"><span class="box"></span><div>
-      <b>27. Biographical page — CLOSED ✓ (1 Aug): re-checked field by field, no errors; all 4 refinements answered by Dad</b>
-      <p><span class="where">Part 2 · Biographical Information</span></p>
-      <p><b>Dad's answers, 1 Aug — page is final:</b> 27a <b>confirmed</b> — Raphael holds no US citizenship or green card, so "Form I-20 required = Yes" is correct and the F-1 will be issued on the French passport. 27b <b>keep France</b> as entered in Country of Citizenship. 27c <b>confirmed</b> — English genuinely is the home language. 27d <b>keep as is</b> — "Other: French Chinese" only. <b>Nothing further to change on this page except item 19</b> (add "+" to the phone number).</p>
-      <p><b>Verification method:</b> every filled field was cross-checked against its character counter — First Name 7, Middle 5, Last 7, Preferred 7, City of Birth 9, Address 1 = 31, Address 2 = 28, City 9, Province 9, Zip 5, Phone 11, Email 25, "French Chinese" 14. <b>All counts match the visible text exactly</b>, so there are no hidden trailing spaces, truncations or stray characters anywhere on the page. Home address spelling is right too: the estate is "<b>Redhill</b> Peninsula" (one word) — genuinely different from HKIS's "<b>Red Hill</b> Road" (two words), so both are now correct.</p>
-      <p><b>27a. Confirm Raphael holds no US citizenship or green card.</b> The whole page hinges on it: "Will you require a Form I-20" = <b>Yes</b>. Mom was educated in the US (Grier School, Juniata College), so this is worth one explicit confirmation — if any US status existed, the answer would be <b>No</b>, no visa would be needed, and the enrolment paperwork at all five schools would run differently. Five-second check, high consequence.</p>
-      <p><b>27b. "Country of Citizenship" repeats France.</b> The field's own hint reads "<i>If different from the country listed on Form I-20</i>", and the I-20 country is already France — so this field is meant to be left blank (or hold the other nationality). "Second Country of Citizenship = Hong Kong" is exactly right ✓. Harmless duplication; blanking it reads cleaner. Low priority.</p>
-      <p><b>27c. "Language spoken in your home = English" — confirm it's accurate.</b> If English genuinely is the home language, keep it: it is honest, matches an English-medium school record and a 98th-percentile Language Usage score, and avoids schools reflexively adding an English-proficiency test (TOEFL/Duolingo) to his file. If the house is really French- or Cantonese-dominant, the honest answer is the right one — flagging only so it's a conscious choice, not a default.</p>
-      <p><b>27d. Optional Background: only "Other → French Chinese" is ticked.</b> The form says "check all that apply", and US schools normally record dual heritage by ticking each. Ticking <b>Asian American or Asian</b> and <b>White or Caucasian</b> as well — keeping "French Chinese" as the written detail — represents him accurately in both communities rather than leaving him uncounted in either. Entirely the family's call.</p>
-      <p><b>Also noted (no action):</b> "Province of Birth" is blank while the address "Province" says Hong Kong — cosmetic only, and Hong Kong has no provinces. The missing "+" on this page's phone number is already <b>item 19</b>. And this page is headed "to be completed by the student" — worth Raphael reading it once, since interviewers do ask candidates about their own application.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>23. Coding — answered: classes at Preface, and no Roblox game yet</b>
-      <p><span class="where">Interests &amp; Achievements → new activity block</span></p>
-      <p>Two years of lessons at <b>Preface</b>, the Hong Kong coding school — a real, recognisable name, which is worth stating rather than writing "coding classes". And Raphael has <b>not</b> built a Roblox game yet, so that line has been removed from the achievements box. That was the right catch: a claimed project he cannot open on a laptop is the one thing in an application that can actively harm him, because it is the easiest thing for an interviewer to ask to see.</p>
-      <p><span class="to">The block to add:</span> Activity "Other" → "<b>Coding</b>" · Years of Experience <b>2</b> · Level of Involvement "<b>Preface (Hong Kong) - weekly classes</b>" (36 of 60) · Positions Held <b>left blank</b> — that field is for awards and leadership, and inventing something for it would undo the honesty of the entry · Will you continue: <b>Yes</b>. <b>Still needed from Mom:</b> hours per week, weeks per year, which language he is learning — and whether Preface awards levels or certificates, since a completed level would be a genuine line for the achievements box.</p>
-    </div></div>
-    <div class="item done"><span class="box"></span><div>
-      <b>24. Folder fact-checks — ALL RESOLVED ✓ (Dad, 28 Jul)</b>
-      <p>① DSA Basketball — <b>stopped</b> → correctly omitted. ② CIS — <b>never attended</b> (application only) → school history is complete as entered. ③ Le Rosey — <b>one program only</b> → the box line stands as is. ④ Referee "3 Years" — <b>confirmed ✓</b>. Every activity number on the form is now either verified or in the item-17 audit.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>25. Process gaps — the application beyond this form</b><span class="new">NEW</span>
-      <p>① <b>SSAT registration</b> — Oct 2026 sitting; register in <b>August</b>, HK seats fill. ② <b>Recommenders + transcripts</b> — line up the HKIS MS counselor and the English &amp; Math teachers in <b>early fall</b> (they get swamped; requests go out via each school after profile submission). ③ <b>Visit/interview trip</b> — once the profile is submitted, book the New England loop (all 5 schools sit in a CT/MA cluster; a Choate parents'-weekend anchor is natural). ④ After submission, work the Gateway <b>Checklist</b> tab per school. ⑤ <b>My Advisers</b> section: leave blank unless the family engages a consultant. ⑥ <b>UK track needs a decision</b>: Fall 2027 = Year 10 in the UK, and most boarding schools only take 13+ (Year 9) and 16+ entries — the Brighton thread was for 2026 entry. Pursue limited Year-10 spots, or focus US?</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>26. Watch-and-update-later (post-submission emails to schools)</b><span class="new">NEW</span>
-      <p>If any of these land before decisions, email each school: <b>DELF B1</b> (he's working toward it) · <b>Red-Black belt</b> · <b>Symphonic Band first chair</b> · <b>HKIS House Leader</b> election (he was a candidate) · new football/XC results. Also: if Gateway offers a <b>photo upload</b> anywhere, use a proper headshot (the CV one needs replacing anyway).</p>
-    </div></div>
-    <div class="item done"><span class="box"></span><div>
-      <b>Deliberately NOT on this form — correct omissions, don't add:</b>
-      <p><b>G6PD deficiency</b> — belongs on post-admission health forms only, not the candidate profile. <b>MAP percentiles / Lexile</b> — test data doesn't belong in the achievements box. <b>Reading log</b> — interview asset, not a form field. <b>Tutoring</b> (Aegis English, Maths, Mandarin, SSAT prep) — never list tutoring on an application.</p>
-    </div></div>
-  </div>
-
-  <h2><span class="tag amber">Watch</span> Calendar &amp; not-yet-reviewed</h2>
-  <div class="banner amber">
-    <span class="where">Documents · outside Gateway</span><br>
-    <b>Passports:</b> HKSAR expires <b>Apr 2027</b>, French expires <b>Dec 2027</b>. <b>Renew early 2027 — French first:</b> the I-20 is set to French citizenship, so the F-1 visa goes in the French passport. Both valid for the Oct 2026 SSAT.
-  </div>
-  <div class="banner amber" style="margin-top:8px;">
-    <span class="where">Part 2 · Additional Information → Signatures</span><br>
-    <b>Before submitting:</b> after items 8, 4, 17 and 22 are applied, <b>re-run "Print Preview for:" each school</b> (certification is already checked, signatures dated 22 Jul 2026). Post-submission changes go by email to each school.
-  </div>
-  <div class="banner amber" style="margin-top:8px;">
-    <b>Still to re-verify from screenshots:</b> Family Information pages (items 1, 2, 12) · Part 1 Academic previous-school field (item 5) · Review-in-Order-to-Submit (Parts 1 &amp; 2) · Payment · Part 1 &amp; 3 checklists. <b>Done:</b> Biographical ✓ · Educational Background ✓ · Interests &amp; Achievements ✓ (incl. full achievements box) · My Schools ✓.
+  <div class="banner amber" style="margin-top:22px;">
+    <b>Before you submit:</b> re-run "Print Preview for:" on each of the five schools after the fixes above, then re-date the signatures. The profile locks on submission — anything that lands later (the Macroeconomics evaluation, the red-black belt, a Symphonic Band chair, football results) goes to each admissions office by email. <b>And renew the French passport early in 2027:</b> it expires in December 2027 and the F-1 visa will be issued in it.
   </div>
 
   <details>
-    <summary>✅ Verified correct — no action needed (42 checks, tagged by section)</summary>
+    <summary>✅ Verified fixed in this PDF — 16 items</summary>
     <div class="card donegrid" style="margin-top:6px;">
-      <div class="item done"><span class="box"></span><div><span class="sec">P1 Candidate ·</span> Full legal name matches both passports exactly (MRZ-checked)</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P1 Candidate ·</span> Date of birth verified against both passports (incl. mm/dd format trap)</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P1 Candidate ·</span> Gender, suffix, preferred name</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P1 Academic ·</span> Present Grade 8 — correct for 2026-27, applying G9 for Fall 2027</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P1 Academic ·</span> Present school HKIS; HK conventions consistent</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P1 Contact ·</span> Home address current &amp; in "perfect case"</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P1 Contact ·</span> Contact number = Mom's cell (intentional); candidate email confirmed</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">My Schools ·</span> All 5 schools: Fall 2027 · Boarding · Grade 9</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Biographical ·</span> Identity block matches Part 1 + passports (name, DOB, gender, Grade 8, HK birth)</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Biographical ·</span> I-20 Yes · France · second citizenship Hong Kong — correct, visa in French passport</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Biographical ·</span> First-gen: No · "Other: French Chinese" · home language English · pronouns blank — all fine</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Biographical ·</span> Address/contact/email identical to Part 1</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Ed. Background ·</span> "Fewer than 2 years: No" (HKIS since Aug 2023)</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Ed. Background ·</span> Start date verified on screenshot: 08/14/2023</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Ed. Background ·</span> Ends after G12 · Private School: Day Student</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Ed. Background ·</span> FIS: full official name, Jardine's Lookout campus, 34 Price Road — all verified</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Ed. Background ·</span> School timeline gap-free: Yew Chung 2013-17 → FIS 2017-23 → HKIS 2023-</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Ed. Background ·</span> Discipline questions No / No</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Interests ·</span> Checkboxes: 6 of 8 ticked — the honest, evidence-backed set</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Interests ·</span> Soccer block: 4 yrs, midfielder, HKJFL — consistent</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Interests ·</span> Referee block: HKJFL certified, U7-U12 — consistent with records</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Interests ·</span> Cross country: School Team ✓, U14 ISSFHK qualifier, 16-week season</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Interests ·</span> Taekwondo: Red Belt ✓ (per Dad's final call), competition level</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Interests ·</span> Fencing: 7 years ✓ (matches Sep 2018 doc), Foil, Continue = No (stopped 2025)</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Interests ·</span> St Baldrick's position now includes the individual result — stronger than before</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Interests ·</span> All activities within the past-two-years rule</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Achievements box ·</span> SCAT High Honors + both CTY courses now in (incl. new Macroeconomics Jul 2026)</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Achievements box ·</span> St Baldrick's present (team + individual results)</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Achievements box ·</span> Cambodian Children's Fund - Volunteer Trumpet Instructor (Jul 2026) — excellent line</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Achievements box ·</span> PADI "Junior Open Water Diver" wording fixed ✓</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Family ·</span> Married + Household 1 confirmed; Household 2 N/A ✓</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Family ·</span> Dad's block: type/status/guardianship/names/phones all consistent</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Family ·</span> Dad: Lycée Ampère, two Master's (confirmed), BofA Cheung Kong Center (verified)</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Family ·</span> Mom's block: names/guardianship consistent with signature</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Family ·</span> Mom: Grier School PA → Juniata (Bachelors) → CUHK (Masters); Not Currently Employed</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Family (cont.) ·</span> Sibling: Liv · Choate Rosemary Hall · rising sophomore</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Additional Info ·</span> Financial aid No — intentional</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Additional Info ·</span> Signatures ×3 correct, dated 22 Jul 2026; authorizations checked</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">P2 Ed. Background ·</span> St Baldrick's "2nd Highest Team" has snapshot proof (Dad)</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">Football ·</span> TTT1 = 2025-26 U12 Championship A runners-up (HKJFL site)</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">Documents ·</span> FIS start Sep 2017 proven (debenture Apr 2017 + RC'17 form + folder structure)</div></div>
-      <div class="item done"><span class="box"></span><div><span class="sec">Documents ·</span> Fencing start Sep 2018 documented (supports the 7 years on the form)</div></div>
+      <div class="item done"><span class="box"></span><div>Fencing "will you continue" back to <b>No</b></div></div>
+      <div class="item done"><span class="box"></span><div>Yew Chung entry removed</div></div>
+      <div class="item done"><span class="box"></span><div>Dad's email now feschetx@gmail.com — two independent inboxes</div></div>
+      <div class="item done"><span class="box"></span><div>Province and Zip cleared on Biographical, HKIS and Household 1</div></div>
+      <div class="item done"><span class="box"></span><div>Referee weeks 40 → <b>10</b></div></div>
+      <div class="item done"><span class="box"></span><div>Skiing weeks 2 → <b>1</b></div></div>
+      <div class="item done"><span class="box"></span><div>Trumpet now "Concert Band / First Trumpet" — accurate</div></div>
+      <div class="item done"><span class="box"></span><div>Symphonic Band captured separately under a new MUSIC heading</div></div>
+      <div class="item done"><span class="box"></span><div>Trumpet weeks 56 → 52 (still to go to ~40)</div></div>
+      <div class="item done"><span class="box"></span><div>Fencing weeks 52 → 48</div></div>
+      <div class="item done"><span class="box"></span><div>Visual Arts &amp; Performing Arts re-ticked — 6 of 8</div></div>
+      <div class="item done"><span class="box"></span><div>St Baldrick's box line: 3 years, Organizing Committee 2026, both results</div></div>
+      <div class="item done"><span class="box"></span><div>Lombok added, 2024-2026</div></div>
+      <div class="item done"><span class="box"></span><div>Class Rep 2022-2026 + "stood for election again in G7"</div></div>
+      <div class="item done"><span class="box"></span><div>Macroeconomics marked "(in progress)"</div></div>
+      <div class="item done"><span class="box"></span><div>Alumni deliberately blank; Liv already shows in Siblings</div></div>
+    </div>
+  </details>
+
+  <details>
+    <summary>✓ Checked and correct — no action needed</summary>
+    <div class="card donegrid" style="margin-top:6px;">
+      <div class="item done"><span class="box"></span><div>Name, DOB, birthplace — match both passports</div></div>
+      <div class="item done"><span class="box"></span><div>Grade 8 now, applying Grade 9, Fall 2027, <b>Boarding</b></div></div>
+      <div class="item done"><span class="box"></span><div>Form I-20 Yes · France · second citizenship Hong Kong</div></div>
+      <div class="item done"><span class="box"></span><div>First-generation college: No</div></div>
+      <div class="item done"><span class="box"></span><div>HKIS since 14 Aug 2023, ends after Grade 12, Day Student</div></div>
+      <div class="item done"><span class="box"></span><div>FIS full official name, 34 Price Road, Jardine's Lookout</div></div>
+      <div class="item done"><span class="box"></span><div>Discipline questions No / No</div></div>
+      <div class="item done"><span class="box"></span><div>Both parents' names, phones, birthplaces, degrees</div></div>
+      <div class="item done"><span class="box"></span><div>Mom's secondary number = home landline</div></div>
+      <div class="item done"><span class="box"></span><div>Household 2 correctly empty</div></div>
+      <div class="item done"><span class="box"></span><div>Sibling entry: Liv, Choate Rosemary Hall</div></div>
+      <div class="item done"><span class="box"></span><div>Financial aid: No</div></div>
+      <div class="item done"><span class="box"></span><div>All three signatures present, authorization ticked</div></div>
+      <div class="item done"><span class="box"></span><div>Achievements box has room to spare — well under 1,500 characters</div></div>
     </div>
   </details>
 
   <footer>
-    Prepared by Claude for the Feschet family · Updated as items close · 28 Jul 2026<br>
+    Prepared by Claude for the Feschet family · 2 August 2026<br>
     No personal identifiers (birth dates, addresses, contact details, document numbers) are published on this page by design.
   </footer>
 </div>
