@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Raphael · Gateway Application — What's Left (v2 review)</title>
+<title>Raphael · Gateway Application — What's Left (v3 review)</title>
 <style>
   :root{
     --bg:#f6f8fa; --card:#fff; --ink:#1f2d3d; --muted:#5c6b7a;
@@ -58,58 +58,73 @@
 <header>
   <div class="wrap">
     <h1>Raphael · Gateway Application — what's left</h1>
-    <p class="sub">Checked against the v2 Candidate Profile PDF, 2 August 2026</p>
+    <p class="sub">Checked page by page against the v3 Candidate Profile PDF, 2 August 2026</p>
     <div class="pills">
       <span class="pill">🎯 Fall 2027 · Boarding · Grade 9</span>
       <span class="pill">🏫 5 schools</span>
-      <span class="pill">✅ 9 more fixed in v2</span>
-      <span class="pill">⚠ 2 new errors</span>
-      <span class="pill">🔧 6 left</span>
+      <span class="pill">✅ 4 more fixed in v3</span>
+      <span class="pill">🔧 6 remaining</span>
+      <span class="pill">📝 box: 1,293 / 1,500</span>
     </div>
-    <p class="updated">Good progress in v2 — nine more items are done. But two new mistakes appeared while editing, and one of them puts a football club in the cross-country row. Both are quick.</p>
+    <p class="updated">v3 is clean — every error from the last round has been corrected, and nothing new was introduced. What is left is mostly things not yet added rather than things written wrongly. The single biggest gap is the missing coding row, because Computer Science is ticked with almost nothing behind it.</p>
   </div>
 </header>
 
 <div class="wrap">
 
-  <h2><span class="tag red">New in v2</span> Two mistakes introduced while editing</h2>
+  <h2><span class="tag green">v3</span> Everything flagged last round is fixed</h2>
+  <p class="h2sub">Both editing slips are gone, and the SCAT line is now written in CTY's own vocabulary.</p>
+  <div class="card">
+    <div class="item done"><span class="box"></span><div><b>Tai Tam Tigers is back where it belongs</b> — Soccer now reads "HK Junior Football League - Tai Tam Tigers", Cross Country is "School Team" again.</div></div>
+    <div class="item done"><span class="box"></span><div><b>"St Baldrick's Foundation"</b> — spelling corrected and the stray comma gone.</div></div>
+    <div class="item done"><span class="box"></span><div><b>SCAT line rewritten:</b> "SCAT High Honors, Advanced CTY Level: Verbal &amp; Quantitative". This is now the strongest academic line in the file — a named, gradable CTY qualification an American reader places instantly.</div></div>
+    <div class="item done"><span class="box"></span><div><b>Kids4Kids re-dated to July 2026</b>, matching when he actually started.</div></div>
+  </div>
+
+  <h2><span class="tag red">Remaining</span> Six things, in the order I would do them</h2>
   <div class="card">
     <div class="item"><span class="box"></span><div>
-      <b>1. "Tai Tam Tigers" has landed in the Cross Country row instead of Soccer</b><span class="ref">activity grid</span>
-      <p><span class="now">Now:</span> Cross Country → Level of Involvement reads "<b>School Team - Tai Tam Tigers</b>", while Soccer still reads only "HK Junior Football League". Tai Tam Tigers is his <b>football club</b>; cross country is the HKIS school team. As written, the two sports have swapped identities — and a reader who knows Hong Kong sport will spot it immediately.</p>
-      <p><span class="to">Fix:</span> Cross Country Level → "<b>School Team</b>" (as it was). Soccer Level → "<b>Tai Tam Tigers, Hong Kong Junior Football League</b>" (48 of 60 characters).</p>
+      <b>1. The coding block is still missing</b><span class="ref">activity grid — the empty row at the bottom</span>
+      <p>This is now the biggest gap in the application. <b>Computer Science is ticked</b>, and the only thing standing behind it is one hackathon line buried in the achievements box. Two years of weekly classes belong in the grid: Activity "Other" → "<b>Coding</b>" · Years <b>2</b> · Level "<b>Preface (Hong Kong) - weekly classes</b>" · Positions <b>blank</b> · Continue <b>Yes</b>. Hours per week and weeks per year still needed from Mom — but the row is worth adding even with rough figures rather than leaving the tick unsupported.</p>
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>2. "St Baldrick's Fundation" — missing the O</b><span class="ref">activity grid</span>
-      <p>The activity row now reads "St Baldrick's <b>Fundation</b>, Organizing Committee, Volunteer," — a misspelling of Foundation, plus a stray comma at the end. The achievements box spells it correctly, which makes the grid version look like a slip. <span class="to">Suggested replacement:</span> "<b>St Baldrick's Foundation, Organizing Committee 2026</b>" (50 of 60) — correct spelling, no trailing comma, and it dates the committee role to the one year he served on it.</p>
+      <b>2. Fencing "Positions held" still says "Foil"</b><span class="ref">activity grid</span>
+      <p>The row already reads Fencing / Foil, so the column repeats what is directly to its left, and that column is meant for awards and honours. <b>On the terminology question:</b> someone who fences foil is a <b>foilist</b> (French: <i>fleurettiste</i>; the others are épéeist and sabreur). But "Foilist" would still be describing the weapon rather than an achievement. <span class="to">Better use of the space:</span> "<b>HKSSF no.30 (2023)</b>" — 18 characters, and it puts his actual ranking in the one column an admissions reader scans for results.</p>
+    </div></div>
+    <div class="item"><span class="box"></span><div>
+      <b>3. Two blank rows still print in the schools table</b><span class="ref">Educational Background</span>
+      <p>Unchanged through three versions: an empty row with a dash, then FIS, then a second empty row with a dash. Move the FIS entry into the first "Other Schools" block, clear the leftover additional row, and re-preview — it should print as one clean line.</p>
+    </div></div>
+    <div class="item"><span class="box"></span><div>
+      <b>4. Signatures still dated 22 July 2026</b><span class="ref">page 1H</span>
+      <p>Confirmed unchanged. The document has been revised three times since that date, and the certification is meant to cover what is actually sent. Re-date all three on the day you submit, after the final print preview.</p>
+    </div></div>
+    <div class="item"><span class="box"></span><div>
+      <b>5. Additional Information is still completely blank</b><span class="ref">page 1G</span>
+      <p>Six thousand characters, and nothing in them. The story is ready and it is a good one: a family of educators choosing boarding deliberately — both grandmothers headmistresses, Mom boarded at Grier School in Pennsylvania, Liv at Choate now, and Raphael has moved between a French curriculum and an American one and thrived in both. Four or five sentences answer the two questions every committee asks about an overseas thirteen-year-old, and no other part of the form can carry them.</p>
+    </div></div>
+    <div class="item"><span class="box"></span><div>
+      <b>6. Part 1 Applicant Profile has still never been checked</b><span class="ref">separate from this PDF</span>
+      <p>Three fields: the previous school under its full name, Province and Zip cleared on the contact address, and the "+" on the phone number. One pass.</p>
     </div></div>
   </div>
 
-  <h2><span class="tag amber">Still open</span> Four from the previous list, plus two loose ends</h2>
+  <h2><span class="tag amber">Optional</span> Polish — none of this is wrong</h2>
   <div class="card">
     <div class="item"><span class="box"></span><div>
-      <b>3. The coding block is still not in the grid</b><span class="ref">activity grid — empty row at the bottom</span>
-      <p>It is not in v2. Activity "Other" → "<b>Coding</b>" · Years <b>2</b> · Level "<b>Preface (Hong Kong) - weekly classes</b>" · Positions <b>blank</b> · Continue <b>Yes</b>. Still need hours per week and weeks per year from Mom. Right now Computer Science is ticked and the hackathon is the only thing behind it.</p>
+      <b>The achievements box has 207 characters spare</b> — 1,293 of 1,500 used. Room for the football result the moment the club supplies it (a line would need about 57), and room for a coding line if Preface awards a level.
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>4. Fencing "Positions held" still just repeats the weapon</b><span class="ref">activity grid</span>
-      <p>The row already says Fencing / Foil, and the Positions column says "Foil" again. <span class="to">Use it:</span> "<b>HKSSF no.30 (2023)</b>" (18 characters), or leave it blank.</p>
+      <b>"Advanced CTY Level"</b> — CTY hyphenates it: <b>Advanced CTY-Level</b>. One character.
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>5. Two blank rows still print in the schools table</b><span class="ref">Educational Background</span>
-      <p>Unchanged in v2: an empty row with a dash, then FIS, then a second empty row with a dash. Move FIS into the first "Other Schools" block, clear the leftover row, and re-preview — it should print as one clean line.</p>
+      <b>Soccer level of involvement</b> reads "HK Junior Football League - Tai Tam Tigers" (42 characters). "<b>Tai Tam Tigers, Hong Kong Junior Football League</b>" is 48 and spells out an acronym no American reader knows.
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>6. Signatures still dated 22 July</b><span class="ref">page 1H</span>
-      <p>Re-date all three to the day you submit, after the final print preview — the certification is meant to cover what is actually sent.</p>
+      <b>The Paris event</b> reads "Paris Mini-Fleuret Marathon"; the organisers call it the "Mini Marathon Fleuret". The spelling — the part that mattered — is fixed.
     </div></div>
     <div class="item"><span class="box"></span><div>
-      <b>7. Part 1 Applicant Profile has still not been checked</b><span class="ref">separate from this PDF</span>
-      <p>Three fields: previous school as the full "French International School of Hong Kong", Province and Zip cleared on the contact address, and the "+" on the phone number.</p>
-    </div></div>
-    <div class="item"><span class="box"></span><div>
-      <b>8. Two small date/wording points</b>
-      <p><b>Kids4Kids</b> is dated August 2026, but Dad says he started in <b>July</b> with the first reading session in August — "Jul 2026" or "2026" is the more accurate label. <b>The Paris event</b> now reads "Paris Mini-Fleuret Marathon"; the organisers call it the "Mini Marathon Fleuret". The spelling fix was the important part and it is done — the word order is optional polish.</p>
+      <b>Multimedia</b> — both slots empty. Cambodia teaching trumpet is the obvious clip; the Rubik's solve is forty seconds and one take.
     </div></div>
   </div>
 
